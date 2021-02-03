@@ -1,11 +1,12 @@
 @extends('layouts/master')
+
 @section('content')
 <div class="container">
    <div class="row justify-content-center">
-      <div class = "col-md-10">
+      <div class = "col-md-12">
         <div class = "card">
            <div class = "card header">
-             <h5><b>Tambah Data Kecamatan</b></h5>
+             Tambah Data Kecamatan
            </div>
            <div class="card-body">
 
@@ -26,9 +27,10 @@
                    <div class="form-group">
                    <label for="">Nama Kecamatan</label>
                    <input type="text" name="nama_kecamatan" class="form-control" required>
+                   
                 </div>
                    <div class="form-group">
-                   <button type = "submit" class="btn btn-primary">Submit</button>
+                   <button type = "submit" class="btn btn-primary">Simpan</button>
                    </div>
                 </form>
            </div>

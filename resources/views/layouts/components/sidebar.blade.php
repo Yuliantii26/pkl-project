@@ -20,33 +20,33 @@
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+          <a href="{{route('kelurahan.index')}}"class="nav-link">
               <i class="nc-icon nc-bell-55"></i>
               <p>kelurahan</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+          <a href="{{route('rw.index')}}"class="nav-link">
               <i class="nc-icon nc-single-02"></i>
               <p>rw</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+          <a href="{{route('tracking.index')}}"class="nav-link">
               <i class="nc-icon nc-tile-56"></i>
-              <p>Table List</p>
+              <p>Tracking</p>
             </a>
           </li>
           <li>
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Typography</p>
+              <p></p>
             </a>
           </li>
           <li class="active-pro">
             <a href="./upgrade.html">
               <i class="nc-icon nc-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p></p>
             </a>
           </li>
         </ul>

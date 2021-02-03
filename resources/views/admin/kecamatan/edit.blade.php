@@ -2,7 +2,7 @@
 @section('content')
 <div class = "container">
   <div class ="row justify-content-center">
-    <div class = "col-md-10">
+    <div class = "col-md-12">
        <div class = "card">
           <div class = "card-header">Edit Kecamatan</div>
             <div class="card-body">
@@ -18,6 +18,7 @@
                   <label for="">Nama Kecamatan</label>
                    <input type="text" name="nama_kecamatan" value="{{$kecamatan->nama_kecamatan}}"
                    class="form-control" require>
+                 
                </div>
                <div class="form-group">
                  <label for="exampleFormControlSelect">Nama Kota</label>
@@ -32,10 +33,9 @@
                  @endforeach
                  </select>
                </div>
-               <div class="form-group">
-                   <button type="submit" class="btn btn-primary">Submit</button>
-                     <a href="{{url()->previous()}}" class="btn btn-outline-secondary">Kembali</a>
-               </div>
+               <div class='form-group'>
+                         <button type="submit" class="btn btn-promary btn-block">Simpan</button>
+                    </div>
              </form>
             </div>
        </div>

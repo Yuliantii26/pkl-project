@@ -15,6 +15,11 @@ class CreateTrackingsTable extends Migration
     {
         Schema::create('trackings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('id_rw');
+            $table->integer('positif');
+            $table->integer('sembuh');
+            $table->integer('meninggal');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

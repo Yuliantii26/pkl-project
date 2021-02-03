@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             @if (session('message'))
                 <div class="alert alert-success" role="alert">
                     {{ session('message') }}
@@ -10,9 +10,10 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h3>Data Kota</h3>
-                    <a href="{{route('kota.create')}}" class="btn btn-outline-dark float-right">
+                    Data Kota
+                    <a href="{{route('kota.create')}}" class="btn btn-primary btn-small float-right">
                         Tambah Data</a>
+                       
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -21,7 +22,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Id Provinsi</th>
-                                    <th>Kode Kota</th>
+                                    <th>Id Kota</th>
                                     <th>Nama Kota</th>
                                     <th>Nama Provinsi</th>
                                     <th> Aksi</th>

@@ -43,6 +43,7 @@ class KotaController extends Controller
      */
     public function store(Request $request)
     {
+       
         $kota = new Kota();
         $kota->kode_kota = $request->kode_kota;
         $kota->nama_kota = $request->nama_kota;
@@ -85,6 +86,7 @@ class KotaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $kota = Kota::findOrFail($id);
         $kota->kode_kota = $request->kode_kota;
         $kota->nama_kota = $request->nama_kota;

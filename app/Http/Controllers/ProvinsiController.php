@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Provinsi;
+use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
 class ProvinsiController extends Controller
@@ -12,6 +13,12 @@ class ProvinsiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() // memberi izin
+    {
+       $this->middleware('auth');
+    }
+
     public function index()
     {
         $provinsi = Provinsi::all();
@@ -25,6 +32,7 @@ class ProvinsiController extends Controller
      */
     public function create()
     {
+        $provinsi = Provinsi::all();
         return view('admin.provinsi.create');
     }
 
@@ -36,6 +44,7 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
+        
         $provinsi = new Provinsi();
         $provinsi->kode_provinsi = $request->kode_provinsi;
         $provinsi->nama_provinsi = $request->nama_provinsi;
@@ -76,6 +85,7 @@ class ProvinsiController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         $provinsi = Provinsi::findOrFail($id);
         $provinsi->kode_provinsi = $request->kode_provinsi;
         $provinsi->nama_provinsi = $request->nama_provinsi;

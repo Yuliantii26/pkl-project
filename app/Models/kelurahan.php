@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class kelurahan extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_kec','nama_kel'];
+
+    protected $fillable = ['id','nama_kelurahan','id_kecamatan','id_kelurahan'];
+    protected $table = "kelurahans";
     public $timestamps = true;
 
-    public function kelurahan()
+    public function kecamatan()
     {
-        return $this->belongsTo('App/Models/kelurahan','id_prov');
+        return $this->belongsTo('App\Models\Kecamatan','id_kecamatan');
     }
-    public function rw(){
-        return $this->hasMany('App/Models/kelurahan','id_prov');
+
+    public function rw()
+    {
+        return $this->hasMany('App\Models\Rw','id_rw');
     }
 }

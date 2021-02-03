@@ -13,10 +13,12 @@
                         <div class="form-group">
                             <label for="">Kode Kota</label>
                             <input type="text" name="kode_kota" value="{{$kota->kode_kota}}" class="form-control" required>
+                           
                         </div>
                         <div class="form-group">
                             <label for="">Nama Kota</label>
                             <input type="text" name="nama_kota" value="{{$kota->nama_kota}}" class="form-control" required>
+                           
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Provinsi</label>
@@ -32,10 +34,9 @@
                                 @endforeach
                             </select>
                         </div> 
-                        <div class="form-group">           
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{url()->previous()}}" class="btn btn-outline-secondary">Kembali</a>
-                        </div>
+                        <div class='form-group'>
+                         <button type="submit" class="btn btn-promary btn-block">Simpan</button>
+                    </div>
                     </form>                
                 </div>
             </div>

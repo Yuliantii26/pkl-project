@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
 <div class = "container">
     <div class = "row">
@@ -14,10 +15,12 @@
                     <div class='form-group'>
                          <label for="">Kode provinsi</label>
                          <input type="text" name="kode_provinsi" class="form-control" value="{{$provinsi->kode_provinsi}}" required>
+                        
                     </div>
                     <div class='form-group'>
                          <label for="">Nama provinsi</label>
                          <input type="text" name="nama_provinsi" class="form-control" value="{{$provinsi->nama_provinsi}}" required>
+                         
                     </div>
                     <div class='form-group'>
                          <button type="submit" class="btn btn-promary btn-block">Simpan</button>

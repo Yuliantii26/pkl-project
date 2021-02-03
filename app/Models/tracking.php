@@ -13,6 +13,6 @@ class tracking extends Model
     public $timestamps = true;
 
     public function rw(){
-        return $this->belongsTo('App/Models/tracking','id_rw');
+        return $this->belongsTo('App\Models\Rw','id_rw');
     }
 }

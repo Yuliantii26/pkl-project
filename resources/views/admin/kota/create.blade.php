@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <h5><b>Tambah Data Kota</b></h5>
+                    Tambah Data Kota
                 </div>
                 <div class="card-body">
 
@@ -14,21 +14,23 @@
                         <div class="form-group">
                             <label for="">Kode Kota</label>
                             <input type="text" name="kode_kota" class="form-control" required>
+                           
                         </div>
                         <div class="form-group">
                             <label for="">Nama Kota</label>
                             <input type="text" name="nama_kota" class="form-control" required>
+                            
                         </div>
                         <div class="form-group">
                             <label for="">Nama Provinsi</label>
                             <select class="form-control" name="id_provinsi" id="">
                                 @foreach($provinsi as $data)
-                                <option value="{{$data->id}}">{{$data->nama_provinsi}}</option>
+                                   <option value="{{$data->id}}">{{$data->nama_provinsi}}</option>
                                 @endforeach
                             </select>
                         </div> 
                         <div class="form-group">           
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>                
                 </div>

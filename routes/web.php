@@ -34,3 +34,12 @@ Route::resource('admin/kota', KotaController::class);
 
 use App\Http\Controllers\KecamatanController;
 Route::resource('admin/kecamatan' ,KecamatanController::class);
+
+use App\Http\Controllers\KelurahanController;
+Route::resource('admin/kelurahan',KelurahanController::class);
+
+use App\Http\Controllers\RwController;
+Route::resource('admin/rw',RwController::class);
+
+use App\Http\Controllers\TrackingController;
+Route::resource('admin/tracking',TrackingController::class);

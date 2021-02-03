@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             @if (session('message'))
                 <div class="alert alert-success" role="alert">
                     {{ session('message') }}
@@ -10,8 +10,8 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    <h3>Data kecamatan</h3>
-                    <a href="{{route('kecamatan.create')}}" class="btn btn-outline-dark float-right">
+                    Data kecamatan
+                    <a href="{{route('kecamatan.create')}}" class="btn btn-primary btn-small float-right">
                         Tambah Data</a>
                 </div>
                 <div class="card-body">
@@ -42,7 +42,7 @@
                                             @method('DELETE')
                                             <a href="{{ route('kecamatan.edit', $data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                             <a href="{{ route('kecamatan.show', $data->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i> </a>
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><img src="https://img.icons8.com/metro/15/000000/trash.png"/></i></button>
                                         </form>
                                     </td>
                                 </tr>
