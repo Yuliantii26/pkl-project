@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Tracking;
+use App\Http\Controllers\DB;
+use App\Models\Kota;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 use App\Models\Rw;
+use App\Models\Tracking;
 use Illuminate\Http\Request;
 
 class trackingController extends Controller

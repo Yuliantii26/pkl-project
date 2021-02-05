@@ -4,47 +4,230 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Provinsi;
-use App\Models\Rw;
-use App\Models\Tracking;
 use DB;
+use App\Models\Provinsi;
+use App\Models\Tracking;
+
 
 class ApiController extends Controller
 {
-   
-    public function rw()
-    {
-        $rw = DB::table('trackings')->select([
-            DB::raw('SUM(positif) as Positif'),
-            DB::raw('SUM(sembuh) as Sembuh'),
-            DB::raw('SUM(meninggal) as Meninggal'),
-        ])
-        ->groupBy('tanggal')->get();
+    public function provinsi(){
+        $provinsi = DB::table('provinsis')
+        ->select('provinsis.nama_provinsi','provinsis.kode_provinsi', 
+        DB::raw('SUM(trackings.positif) as positif'),
+        DB::raw('SUM(trackings.sembuh) as sembuh'),
+        DB::raw('SUM(trackings.meninggal) as meninggal'))
+        ->join('kotas','provinsis.id','=','kotas.id_provinsi')
+        ->join('kecamatans','kotas.id','=','kecamatans.id_kota')
+        ->join('kelurahans','kecamatans.id','=','kelurahans.id_kecamatan')
+        ->join('rws','kelurahans.id','=','rws.id_kelurahan')
+        ->join('trackings','rws.id','=','trackings.id_rw')
+        ->groupBy('provinsis.id','tanggal')
+        ->get();
 
         $positif = DB::table('rws')
-                 ->select('trackings.positif',
-                 'trackings.sembuh','trackings.meninggal')
-                 ->join('trackings','rws.id','=','trackings.id_rw')
-                 ->sum('trackings.positif');
+            ->select('trackings.positif','trackings.sembuh','trackings.meninggal')
+            ->join('trackings','rws.id','=','trackings.id_rw')
+            ->sum('trackings.positif');
         $sembuh = DB::table('rws')
-                 ->select('trackings.positif',
-                 'trackings.sembuh','trackings.meninggal')
-                 ->join('trackings','rws.id','=','trackings.id_rw')
-                 ->sum('trackings.sembuh');
+            ->select('trackings.positif','trackings.sembuh','trackings.meninggal')
+            ->join('trackings','rws.id','=','trackings.id_rw')
+            ->sum('trackings.sembuh');
         $meninggal = DB::table('rws')
-                   ->select('trackings.positif',
-                   'trackings.sembuh','trackings.meninggal')
-                   ->join('trackings','rws.id','=','trackings.id_rw')
-                   ->sum('trackings.sembuh');
-                   return response([
-                       'succes' => true,
-                       'data' =>['Hari ini' => $rw,
-                   ],
-                        'total' =>['Positif' => $positif,
-                        'Sembuh' => $sembuh,
-                        ' Meninggal' => $meninggal,
-                ],
-                        'message' => 'Berhasil'
-            ],200);
+            ->select('trackings.positif','trackings.sembuh','trackings.meninggal')
+            ->join('trackings','rws.id','=','trackings.id_rw')
+            ->sum('trackings.meninggal');
+
+        // dd($provinsi);
+        return response([
+            'success' => true,
+            'data' => ['Hari Ini' => $provinsi,
+                        ],
+            'Total' =>[
+                        'Jumlah Positif' => $positif,
+                        'Jumlah Sembuh' => $sembuh,
+                        'Jumlah Meninggal' => $meninggal,
+                    ],
+                    
+                'message' => 'Berhasil'
+                ],200);
+        // $data = [
+        //     'status' => 200,
+        //     'data' => $provinsi,
+        //     'message' => 'Berhasil'
+        // ];
+        // return response()->json($data);
     }
+
+    public function Rw()
+    {
+        $rw = DB::table('trackings')
+                ->select([
+                    DB::raw('SUM(positif) as Positif'),
+                    DB::raw('SUM(sembuh) as Sembuh'),
+                    DB::raw('SUM(meninggal) as Meninggal'),
+                ])
+                ->groupBy('tanggal')->get();
+
+        $positif = DB::table('rws')
+                ->select('trackings.positif',
+                'trackings.sembuh','trackings.meninggal')
+                ->join('trackings','rws.id','=','trackings.id_rw')
+                ->sum('trackings.positif');
+        $sembuh = DB::table('rws')
+                ->select('trackings.positif',
+                'trackings.sembuh','trackings.meninggal')
+                ->join('trackings','rws.id','=','trackings.id_rw')
+                ->sum('trackings.sembuh');
+        $meninggal = DB::table('rws')
+                ->select('trackings.positif',
+                'trackings.sembuh','trackings.meninggal')
+                ->join('trackings','rws.id','=','trackings.id_rw')
+                ->sum('trackings.meninggal');
+
+             return response([
+                'success' => true,
+                'data' => ['Hari Ini' => $rw,
+                          ],
+                'Total' => ['Jumlah Positif'   => $positif,
+                            'Jumlah Sembuh'    => $sembuh,
+                            'Jumlah Meninggal' => $meninggal,
+                          ],
+                'message' => 'Berhasil'
+            ], 200);
+    }
+    
+    public function kota()
+    {
+        $kota = DB::table('kotas')
+                ->select('provinsis.nama_provinsi','kotas.kode_kota','kotas.nama_kota',
+                        DB::raw('SUM(trackings.positif) as Positif'),
+                        DB::raw('SUM(trackings.sembuh) as Sembuh'),
+                        DB::raw('SUM(trackings.meninggal) as Meninggal'))
+                ->join('provinsis','provinsis.id','=','kotas.id_provinsi')
+                ->join('kecamatans','kotas.id','=','kecamatans.id_kota')
+                ->join('kelurahans','kecamatans.id','=','kelurahans.id_kecamatan')
+                ->join('rws','kelurahans.id','=','rws.id_kelurahan')
+                ->join('trackings','rws.id','=','trackings.id_rw')
+                ->groupBy('kotas.id')
+                ->get();
+
+        return response([
+            'success' => true,
+            'data' => $kota,
+            'message' => 'Berhasil'
+        ], 200);
+    }
+
+    public function kecamatan()
+    {
+        $kecamatan = DB::table('kecamatans')
+                     ->select('kotas.nama_kota','kecamatans.kode_kecamatan','kecamatans.nama_kecamatan',
+                         DB::raw('SUM(trackings.positif) as Positif'),
+                         DB::raw('SUM(trackings.sembuh) as Sembuh'),
+                         DB::raw('SUM(trackings.meninggal) as Meninggal'))
+                ->join('kotas','kotas.id','=','kecamatans.id_kota')
+                ->join('kelurahans','kecamatans.id','=','kelurahans.id_kecamatan')
+                ->join('rws','kelurahans.id','=','rws.id_kelurahan')
+                ->join('trackings','rws.id','=','trackings.id_rw')
+                ->groupBy('kotas.id')
+                ->get();
+
+        return response([
+            'success' => true,
+            'data' => $kecamatan,
+            'message' => 'Berhasil'
+        ], 200);
+    }
+
+    public function kelurahan()
+    {
+        $kelurahan = DB::table('kelurahans')
+        ->select('kecamatans.nama_kecamatan','kelurahans.nama_kelurahan',
+            DB::raw('SUM(trackings.positif) as Positif'),
+            DB::raw('SUM(trackings.sembuh) as Sembuh'),
+            DB::raw('SUM(trackings.meninggal) as Meninggal'))
+                ->join('kecamatans','kecamatans.id','=','kelurahans.id_kecamatan')
+                ->join('rws','kelurahans.id','=','rws.id_kelurahan')
+                ->join('trackings','rws.id','=','trackings.id_rw')
+                ->groupBy('kelurahans.id')
+                ->get();
+
+        return response([
+            'success' => true,
+            'data'    => $kelurahan,
+            'message' => 'Berhasil'
+        ], 200);
+    }
+
+  
+    public function positif()
+    {
+        $positif = DB::table('rws')
+            ->select('trackings.sembuh','trackings.positif','trackings.meninggal')
+            ->join('trackings','rws.id','=','trackings.id_rw')
+            ->sum('trackings.positif');
+
+        return response([
+            'success' => true,
+            'data' => 'Data Positif',
+                      'Jumlah Positif' => $positif,       
+            'message' => 'Berhasil'
+        ], 200);
+    }
+
+    public function sembuh()
+    {
+        $sembuh = DB::table('rws')
+              ->select('trackings.sembuh','trackings.positif','trackings.meninggal')
+              ->join('trackings','rws.id','=','trackings.id_rw')
+              ->sum('trackings.sembuh');
+
+        return response([
+            'success' => true,
+            'data' => 'Data Sembuh',
+                      'Jumlah Sembuh' => $sembuh,       
+            'message' => 'Berhasil'
+        ], 200);
+    }
+
+    public function meninggal()
+    {
+        $meninggal = DB::table('rws')
+        ->select('trackings.sembuh','trackings.positif','trackings.meninggal')
+        ->join('trackings','rws.id','=','trackings.id_rw')
+        ->sum('trackings.meninggal');
+
+        return response([
+            'success' => true,
+            'data' => 'Data Meninggal',
+                      'Jumlah Meninggal' => $meninggal,       
+            'message' => 'Berhasil'
+        ], 200);
+    }
+    public function indonesia()
+    {
+        $positif = DB::table('rws')
+              ->select('trackings.sembuh','trackings.positif','trackings.meninggal')
+              ->join('trackings','rws.id','=','trackings.id_rw')
+              ->sum('trackings.positif');
+        $sembuh = DB::table('rws')
+              ->select('trackings.sembuh','trackings.positif','trackings.meninggal')
+              ->join('trackings','rws.id','=','trackings.id_rw')
+              ->sum('trackings.sembuh');
+        $meninggal = DB::table('rws')
+              ->select('trackings.sembuh','trackings.positif','trackings.meninggal')
+              ->join('trackings','rws.id','=','trackings.id_rw')
+              ->sum('trackings.meninggal');
+
+            return response([
+                'success' => true,
+                'data' => 'Data Indonesia',
+                          'Jumlah Positif'   => $positif,
+                          'Jumlah Sembuh'    => $sembuh,
+                          'Jumlah Meninggal' => $meninggal,        
+                'message' => 'Berhasil'
+            ], 200);
+    }
+
 }

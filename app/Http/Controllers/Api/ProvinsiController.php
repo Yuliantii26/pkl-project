@@ -3,17 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Provinsi;
 use Validator;
-use Illuminate\Http\Request;
-
 class ProvinsiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $provinsi = Provinsi::latest()->get();
@@ -24,49 +18,37 @@ class ProvinsiController extends Controller
         ], 200);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //validate data
-        $validator = Validator::make($request->all(), [
-            'kode_provinsi' => 'required|unique:provinsis',
-            'nama_provinsi' => 'required'
+        //  Validate Data
+        $validator = Validator::make($request->all(),[
+            'kode_provinsi' =>  'required|unique:provinsis',
+            'nama_provinsi' =>  'required',
         ],
             [
-                'kode_provinsi.required' => 'Masukan kode Provinsi !!!',
-                'kode_provinsi.unique' => 'Kode Provinsi Sudah Ada !!!',
-                'nama_provinsi.required' => 'Masukan nama Provinsi !!!',
+                'kode_provinsi.required' => 'Masukkan Kode Provinsi !',
+                'nama_provinsi.required' => 'Masukkan Nama Provinsi !',
             ]
         );
 
-        if($validator->fails()) {
-
+        if ($validator->fails()) {
             return response()->json([
                 'success' => false,
-                'message' => 'Silahkan Isi Bidang Yang Kosong',
-                'data' => $validator->errors()
-            ],400);
-
-        } else {
-
-             $provinsi = Provinsi::create([
-                'kode_provinsi' => $request->input('kode_provinsi'),
-                'nama_provinsi'   => $request->input('nama_provinsi')
+                'message' => 'Silahkan Isi Data Yang Kosong',
+                'data'  => $validator->errors()
+            ], 400);
+        } else{
+            $provinsi = Provinsi::create([
+                'kode_provinsi'     => $request->input('kode_provinsi'),
+                'nama_provinsi'   => $request->input('nama_provinsi'),
             ]);
-
 
             if ($provinsi) {
                 return response()->json([
                     'success' => true,
                     'message' => 'Provinsi Berhasil Disimpan!',
                 ], 200);
-            } else {
+            } else{
                 return response()->json([
                     'success' => false,
                     'message' => 'Provinsi Gagal Disimpan!',
@@ -75,12 +57,6 @@ class ProvinsiController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $provinsi = Provinsi::whereId($id)->first();
@@ -89,76 +65,58 @@ class ProvinsiController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Detail Provinsi!',
-                'data'    => $Provinsi
+                'data' => $provinsi
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
                 'message' => 'Provinsi Tidak Ditemukan!',
-                'data'    => ''
+                'data' => ''
             ], 404);
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //validate data
-        $validator = Validator::make($request->all(), [
+        //Validate Data
+        $validator = Validator::make($request->all(),[
             'kode_provinsi' => 'required|unique:provinsis',
             'nama_provinsi' => 'required',
         ],
             [
-                'kode_provinsi.required' => 'Masukkan kode Provinsi !!!',
-                'kode_provinsi.unique' => 'Kode Provinsi Sudah Ada !!!',
-                'nama_provinsi.required' => 'Masukkan nama Provinsi !!!',
+                'kode_provinsi.required' => 'Masukkan Kode Provinsi!',
+                'nama_provinsi.required' => 'Masukkan Nama Provinsi!',
             ]
         );
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
 
             return response()->json([
                 'success' => false,
-                'message' => 'Silahkan Isi Data Yang Kosong',
+                'message' => 'Silahkan Isi Data Yang Kosong!',
                 'data' => $validator->errors()
-            ],400);
-
+            ], 400);
         } else {
 
-            $provinsi = Provinsi::whereId($request->input('id'))->update([
-                'kode_provinsi' => $request->input('kode_provinsi'),
-                'nama_provinsi' => $request->input('nama_provinsi'),
-            ]);
-
+            $provinsi = Provinsi::findOrFail($id);
+            $provinsi->kode_provinsi = $request->kode_provinsi;
+            $provinsi->nama_provinsi = $request->nama_provinsi;
+            $provinsi->save();
 
             if ($provinsi) {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Provinsi Berhasil DiUpdate !!!!',
+                    'message' => 'Provinsi Berhasil Diupdate!',
                 ], 200);
             } else {
                 return response()->json([
-                    'success' => false,
-                    'message' => 'Provinsi Gagal DiUpdate !!!!',
+                    'succes' => false,
+                    'message' => 'Provinsi Gagal Diupdate',
                 ], 500);
             }
-
         }
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $provinsi = Provinsi::findOrFail($id);
@@ -175,6 +133,5 @@ class ProvinsiController extends Controller
                 'message' => 'Provinsi Gagal Dihapus!',
             ], 500);
         }
-
     }
 }
