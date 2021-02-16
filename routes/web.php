@@ -43,3 +43,6 @@ Route::resource('admin/rw',RwController::class);
 
 use App\Http\Controllers\TrackingController;
 Route::resource('admin/tracking',TrackingController::class);
+
+use App\Http\Controllers\FrontendController;
+Route::resource('frontend/index', FrontendController::class);

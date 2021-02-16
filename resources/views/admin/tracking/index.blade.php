@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data kasus
+                   <h3> Data Tracking</h3>
                     <a href="{{route('tracking.create')}}"
                        class="btn btn-primary float-right">
                         Tambah
@@ -14,35 +14,41 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="table">
+                        <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Lokasi</th>
-                                <th>Jumlah Positif</th>
-                                <th>Jumlah Sembuh</th>
-                                <th>Jumlah Meninggal</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Lokasi</th>
+                                <th scope="col">Jumlah Positif</th>
+                                <th scope="col">Jumlah Sembuh</th>
+                                <th scope="col">Jumlah Meninggal</th>
+                                <th scope="col">Tanggal</th>
+                                <th scope="col">Action</th>
                             </tr>
+                            </thead>
+                            
                             @php $no=1; @endphp
                             @foreach($tracking as $data)
                             <tr>
                                 <td>{{$no++}}</td>
                                 <td>
-                                    RW <b>{{$data->rw->nama_rw}}</b>, {{$data->rw->kelurahan->nama_kelurahan}}<br>
-                                    {{$data->rw->kelurahan->kecamatan->nama_kecamatan}}<br> {{$data->rw->kelurahan->kecamatan->kota->nama_kota}},
-                                    {{$data->rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi}}
+                                    Provinsi : {{$data->rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi}}<br>
+                                    Kota : {{$data->rw->kelurahan->kecamatan->kota->nama_kota}}<br>
+                                    Kecamatan : {{$data->rw->kelurahan->kecamatan->nama_kecamatan}}<br>
+                                    kelurahan : {{$data->rw->kelurahan->nama_kelurahan}}
+                                   
                                 </td>
                                 
-                                <td>{{$data->positif}}</td>
-                                <td>{{$data->sembuh}}</td>
-                                <td>{{$data->meninggal}}</td>
-                                <td>{{$data->tanggal}}</td>
-                                <td>
-                                    <form action="{{route('tracking.destroy',$data->id)}}" method="post">
-                                        @csrf @method('delete')
-                                        <a href="{{route('tracking.edit',$data->id)}}" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="{{route('tracking.show',$data->id)}}" class="btn btn-warning btn-sm">Show</a>
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('apakah anda yakin ?')">Delete</button>
+                                <td alighn="center"><br>{{$data->positif}}</td>
+                                <td alighn="center"><br>{{$data->sembuh}}</td>
+                                <td alighn="center"><br>{{$data->meninggal}}</td>
+                                <td alighn="center"><br>{{$data->tanggal}}</td>
+                                <td alighn="center"><br>
+                                
+                                <form action="{{route('tracking.destroy',$data->id)}}" method="POST">
+                              @csrf @method('delete')
+                              <a href="{{route('tracking.edit',$data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                              <a href="{{route('tracking.show',$data->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ? ')"><img src="https://img.icons8.com/metro/15/000000/trash.png"/></button>
                                     </form>
                                 </td>
                             </tr>

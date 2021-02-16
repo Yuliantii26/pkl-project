@@ -18,7 +18,9 @@
                     <div class='form-group'>
                          <label for="">Nama kelurahan</label>
                          <input type="text" name="nama_kelurahan" class="form-control" value="{{$kelurahan->nama_kelurahan}}" required>
-                        
+                         @if($errors->has('nama_kelurahan'))
+                                <span class="text-danger">{{$errors->first('nama_kelurahan')}}</span>
+                            @endif
                     </div>
                     <label>Nama Kecamatan</label>
                     <select name="id_kecamatan" class="form-control" required>
@@ -27,7 +29,7 @@
                         @endforeach
                     </select>
                     <div class='form-group'>
-                         <button type="submit" class="btn btn-promary btn-block">Simpan</button>
+                    <a href="{{url()->previous()}}" class="btn btn-primary">Simpan</a>
                     </div>
                    </form>
                </div>

@@ -19,6 +19,9 @@
                     <div class='form-group'>
                          <label for="">Nama Rw</label>
                          <input type="text" name="nama_rw" class="form-control" value="{{$rw->nama_rw}}" required>
+                         @if($errors->has('nama_rw'))
+                                <span class="text-danger">{{$errors->first('nama_rw')}}</span>
+                            @endif
                     </div>
                     <label>Nama Kelurahan</label>
                     <select name="id_kelurahan" class="form-control" required>
@@ -28,7 +31,7 @@
                     </select>
                     <div class='form-group'>
 
-                         <button type="submit" class="btn btn-promary btn-block">Simpan</button>
+                    <a href="{{url()->previous()}}" class="btn btn-primary">Simpan</a>
                     </div>
                    </form>
                </div>

@@ -25,10 +25,11 @@ Route::get('provinsi', [ApiController::class, 'provinsi']);
 Route::get('kota', [ApiController::class, 'kota']);
 Route::get('kecamatan', [ApiController::class, 'kecamatan']);
 Route::get('kelurahan', [ApiController::class, 'kelurahan']);
-Route::get('indonesia', [ApiController::class, 'indonesia']);
 Route::get('positif', [ApiController::class, 'positif']);
 Route::get('sembuh', [ApiController::class, 'sembuh']);
 Route::get('meninggal', [ApiController::class, 'meninggal']);
+Route::get('indonesia', [ApiController::class, 'indonesia']);
+Route::get('global', [ApiController::class, 'global']);
 
 
 // API CRUD

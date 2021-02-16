@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Provinsi;
@@ -13,17 +14,17 @@ class ApiController extends Controller
 {
     public function provinsi(){
         $provinsi = DB::table('provinsis')
-        ->select('provinsis.nama_provinsi','provinsis.kode_provinsi', 
-        DB::raw('SUM(trackings.positif) as positif'),
-        DB::raw('SUM(trackings.sembuh) as sembuh'),
-        DB::raw('SUM(trackings.meninggal) as meninggal'))
-        ->join('kotas','provinsis.id','=','kotas.id_provinsi')
-        ->join('kecamatans','kotas.id','=','kecamatans.id_kota')
-        ->join('kelurahans','kecamatans.id','=','kelurahans.id_kecamatan')
-        ->join('rws','kelurahans.id','=','rws.id_kelurahan')
-        ->join('trackings','rws.id','=','trackings.id_rw')
-        ->groupBy('provinsis.id','tanggal')
-        ->get();
+                 ->select('provinsis.nama_provinsi','provinsis.kode_provinsi', 
+                  DB::raw('SUM(trackings.positif) as positif'),
+                  DB::raw('SUM(trackings.sembuh) as sembuh'),
+                  DB::raw('SUM(trackings.meninggal) as meninggal'))
+                     ->join('kotas','provinsis.id','=','kotas.id_provinsi')
+                     ->join('kecamatans','kotas.id','=','kecamatans.id_kota')
+                     ->join('kelurahans','kecamatans.id','=','kelurahans.id_kecamatan')
+                     ->join('rws','kelurahans.id','=','rws.id_kelurahan')
+                     ->join('trackings','rws.id','=','trackings.id_rw')
+                     ->groupBy('provinsis.id','tanggal')
+                     ->get();
 
         $positif = DB::table('rws')
             ->select('trackings.positif','trackings.sembuh','trackings.meninggal')
@@ -44,9 +45,9 @@ class ApiController extends Controller
             'data' => ['Hari Ini' => $provinsi,
                         ],
             'Total' =>[
-                        'Jumlah Positif' => $positif,
-                        'Jumlah Sembuh' => $sembuh,
-                        'Jumlah Meninggal' => $meninggal,
+                        'Jumlah Positif'  => $positif,
+                        'Jumlah Sembuh'   => $sembuh,
+                        'Jumlah Meninggal'=> $meninggal,
                     ],
                     
                 'message' => 'Berhasil'
@@ -70,18 +71,15 @@ class ApiController extends Controller
                 ->groupBy('tanggal')->get();
 
         $positif = DB::table('rws')
-                ->select('trackings.positif',
-                'trackings.sembuh','trackings.meninggal')
+                ->select('trackings.positif', 'trackings.sembuh','trackings.meninggal')
                 ->join('trackings','rws.id','=','trackings.id_rw')
                 ->sum('trackings.positif');
         $sembuh = DB::table('rws')
-                ->select('trackings.positif',
-                'trackings.sembuh','trackings.meninggal')
+                ->select('trackings.positif', 'trackings.sembuh','trackings.meninggal')
                 ->join('trackings','rws.id','=','trackings.id_rw')
                 ->sum('trackings.sembuh');
         $meninggal = DB::table('rws')
-                ->select('trackings.positif',
-                'trackings.sembuh','trackings.meninggal')
+                ->select('trackings.positif', 'trackings.sembuh','trackings.meninggal')
                 ->join('trackings','rws.id','=','trackings.id_rw')
                 ->sum('trackings.meninggal');
 
@@ -230,4 +228,13 @@ class ApiController extends Controller
             ], 200);
     }
 
+    public function global(){
+        $url = Http::get('https://api.kawalcorona.com/')->json();
+        $data = [
+            'success' => true,
+            'data'    => $url,
+            'message' => 'Menampilkan Global'
+        ];
+        return response()->json($data,200);
+    }
 }

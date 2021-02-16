@@ -25,7 +25,7 @@
                             <input type="text" name="nama_kecamatan" value="{{$kelurahan->kecamatan->nama_kecamatan}}" class="form-control" required>
                         </div>
                         <div class="form-group">           
-                        <a href="{{url()->previous()}}" class="btn btn-outline-secondary">Kembali</a>
+                        <a href="{{url()->previous()}}" class="btn btn-primary">Kembali</a>
                         </div>
                     </form>                
                 </div>

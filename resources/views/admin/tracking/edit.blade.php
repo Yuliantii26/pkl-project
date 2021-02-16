@@ -23,27 +23,35 @@
                                 <div class="form-group">
                                     <label for="">positif</label>
                                     <input type="text" name="positif" class="form-control" value="{{$tracking->positif}}" required>
-                                   
+                                    @if($errors->has('positif'))
+                                <span class="text-danger">{{$errors->first('positif')}}</span>
+                            @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="">sembuh</label>
                                     <input type="text" name="sembuh" class="form-control" value="{{$tracking->sembuh}}" required>
-                                    
+                                    @if($errors->has('sembuh'))
+                                <span class="text-danger">{{$errors->first('sembuh')}}</span>
+                            @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="">meninggal</label>
                                     <input type="text" name="meninggal" class="form-control" value="{{$tracking->meninggal}}" required>
-                                   
+                                    @if($errors->has('meninggal'))
+                                <span class="text-danger">{{$errors->first('meninggal')}}</span>
+                            @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="">tanggal</label>
                                     <input type="date" name="tanggal" class="form-control" value="{{$tracking->tanggal}}" required>
-                                   
+                                    @if($errors->has('tanggal'))
+                                <span class="text-danger">{{$errors->first('tanggal')}}</span>
+                            @endif
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

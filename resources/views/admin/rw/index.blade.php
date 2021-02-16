@@ -6,19 +6,21 @@
         <div class = "col-md-12">
          <div class = "card">
           <div class = "card-header">
-              Data Rw
+            <h3>  Data Rw</h3>
               <a href="{{route('rw.create')}}" class="btn btn-primary btn-small float-right">Tambah Data</a>
           </div>
           <div class="card-body">
              <div class="table-responsive">
                 <table class="table">
+                <thead>
                 <tr>
-                     <th>No</th>
-                     <th>Id Rw</th>
-                     <th>Nama Rw</th>
-                     <th>Nama Kelurahan</th>
-                     <th>Aksi</th>
+                     <th scope="col">No</th>
+                     <th scope="col">Id Rw</th>
+                     <th scope="col">No Rw</th>
+                     <th scope="col">Nama Kelurahan</th>
+                     <th scope="col">Action</th>
                 </tr>
+                </thead>
                 @php $no=1;
                 @endphp
                 @foreach($rw as $data)

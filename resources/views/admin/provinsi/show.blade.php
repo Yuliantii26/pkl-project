@@ -2,7 +2,7 @@
 @section('content')
 <div class = "container">
     <div class = "row">
-        <div class = "col-md-12">
+        <div class = "col-md-10">
             <div class = "card">
                <div class = "card-header">
                     Lihat Data Provinsi
@@ -18,7 +18,7 @@
                          <input type="text" name="nama_provinsi" class="form-control" value="{{$provinsi->nama_provinsi}}" readonly>
                     </div>
                     <div class="form-group">           
-                        <a href="{{url()->previous()}}" class="btn btn-outline-secondary">Kembali</a>
+                        <a href="{{url()->previous()}}" class="btn btn-primary">Kembali</a>
                         </div>
                    </form>
                </div>

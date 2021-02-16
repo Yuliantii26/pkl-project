@@ -23,7 +23,7 @@
                             <input type="text" name="id_provinsi" value="{{$kota->provinsi->nama_provinsi}}" class="form-control" required>
                         </div> 
                         <div class="form-group">           
-                        <a href="{{url()->previous()}}" class="btn btn-outline-secondary">Kembali</a>
+                        <a href="{{url()->previous()}}" class="btn btn-primary">Kembali</a>
                         </div>
                     </form>                
                 </div>

@@ -5,18 +5,20 @@
         <div class = "col-md-12">
          <div class = "card">
           <div class = "card-header">
-              Data Provinsi
+              <h3>Data Provinsi</h3>
               <a href="{{route('provinsi.create')}}" class="btn btn-primary btn-small float-right">Tambah Data</a>
           </div>
           <div class="card-body">
              <div class="table-responsive">
                 <table class="table">
+                <thead>
                 <tr>
-                     <th>No</th>
-                     <th>Kode Provinsi</th>
-                     <th>Nama Provinsi</th>
-                     <th>Aksi</th>
+                     <th scope="col">No</th>
+                     <th scope="col">Kode Provinsi</th>
+                     <th scope="col">Nama Provinsi</th>
+                     <th scope="col">Action</th>
                 </tr>
+                </thead>
                 @php $no = 1; @endphp
                 @foreach($provinsi as $data)
                 <tr> 

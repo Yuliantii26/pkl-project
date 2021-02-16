@@ -2,7 +2,7 @@
 @section('content')
 <div class = "container">
     <div class = "row">
-        <div class = "col-md-12">
+        <div class = "col-md-10">
             <div class = "card">
                <div class = "card-header">
                     Lihat Data Rw
@@ -22,7 +22,7 @@
                         <input type="text" name="nama_kelurahan" class="form-control" value="{{$rw->kelurahan->nama_kelurahan}}" readonly>
                    </div>
                    <div class="form-group">
-                       <a href="{{ url()->previous() }}" class="btn btn-primary btn-block">Kembali</a>
+                       <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
                    </form>
                </div>
             </div>

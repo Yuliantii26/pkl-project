@@ -3,7 +3,7 @@
 @section('content')
 <div class = "container">
     <div class = "row">
-        <div class = "col-md-12">
+        <div class = "col-md-10">
             <div class = "card">
                <div class = "card-header">
                     Edit Data Provinsi
@@ -15,15 +15,19 @@
                     <div class='form-group'>
                          <label for="">Kode provinsi</label>
                          <input type="text" name="kode_provinsi" class="form-control" value="{{$provinsi->kode_provinsi}}" required>
-                        
+                         @if($errors->has('kode_provinsi'))
+                                <span class="text-danger">{{$errors->first('kode_provinsi')}}</span>
+                            @endif
                     </div>
                     <div class='form-group'>
                          <label for="">Nama provinsi</label>
                          <input type="text" name="nama_provinsi" class="form-control" value="{{$provinsi->nama_provinsi}}" required>
-                         
+                         @if($errors->has('kode_provinsi'))
+                                <span class="text-danger">{{$errors->first('kode_provinsi')}}</span>
+                            @endif
                     </div>
                     <div class='form-group'>
-                         <button type="submit" class="btn btn-promary btn-block">Simpan</button>
+                    <a href="{{url()->previous()}}" class="btn btn-primary">Simpan</a>
                     </div>
                    </form>
                </div>

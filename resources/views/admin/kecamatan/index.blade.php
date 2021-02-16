@@ -10,7 +10,7 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    Data kecamatan
+                    <h3>Data kecamatan</h3>
                     <a href="{{route('kecamatan.create')}}" class="btn btn-primary btn-small float-right">
                         Tambah Data</a>
                 </div>
@@ -19,22 +19,24 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Id Kota</th>
-                                    <th>Kode Kecamatan</th>
-                                    <th>Nama Kecamatan</th>
+                              <th scope="col">No</th>
+                              <th scope="col">Kode Kecamatan</th>
+                              <th scope="col">Nama Kecamatan</th>
+                              <th scope="col">Kota</th>
+                              <th scope="col">Action</th>
                                     
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @php $no=1; @endphp
+                                </thead>
+                                <tbody>
+
+                                    @php $no = 1 ; @endphp
                                 @foreach($kecamatan as $data)
-                                <tr>
-                                    <th >{{$no++}}</th>
-                                    <th>{{$data->kota->nama_kota}}</th>
-                                    <th>{{$data->kode_kecamatan}}</th>
-                                    <th>{{$data->nama_kecamatan}}</th>
-                                   
+                                    <tr>
+                                    <td scope="row">{{ $no++ }} </td>
+                                    <td>{{ $data->kode_kecamatan }}</td>
+                                    <td>{{ $data->nama_kecamatan }}</td>
+                                    <td>{{ $data->kota->nama_kota }}</td>
+                                    
                                                         
                                     <td>
                                         <form action="{{ route('kecamatan.destroy',$data->id)}}" method="POST">

@@ -34,7 +34,7 @@
                  </select>
                </div>
                <div class='form-group'>
-                         <button type="submit" class="btn btn-promary btn-block">Simpan</button>
+               <a href="{{url()->previous()}}" class="btn-primary">Simpan</a>
                     </div>
              </form>
             </div>

@@ -93,7 +93,7 @@ class RwController extends Controller
         $rw = Rw::findOrFail($id);
         $rw->id_kelurahan= $request->id_kelurahan;
         $rw->id_rw= $request->id_rw;
-        $rw->nama_rw = $request->nama_rw;
+        $rw->no_rw = $request->no_rw;
         $rw->save();
         return redirect()->route('rw.index')
             ->with(['message'=>'Data Berhasil Diedit']);

@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Data Kelurahan
+                    <h3>Data Kelurahan</h3>
                     <a href="{{route('kelurahan.create')}}" class="btn btn-primary float-right">Tambah Data</a>
                 </div>
                 <div class="card-body">
@@ -13,11 +13,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>id kelurahan</th>
-                                    <th>Nama Kelurahan</th>
-                                    <th>Nama Kecamatan</th>
-                                    <th>Aksi</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Id kelurahan</th>
+                                <th scope="col">Nama kelurahan</th>  
+                                <th scope="col">Nama kecamatan</th> 
+                                <th scope="col">Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>

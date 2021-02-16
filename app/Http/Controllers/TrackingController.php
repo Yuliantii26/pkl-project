@@ -26,6 +26,17 @@ class trackingController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'positif' => 'required:trackings',
+            'sembuh' => 'required:trackings',
+            'meninggal' => 'required:trackings',
+            'tanggal' => 'required:trackings'
+        ], [
+            'positif.required' => 'Jumlah pasien sembuh harus diisi',
+            'sembuh.required' => 'Jumlah pasien sembuhharus diisi',
+            'meninggal.required' => 'Jumlah pasien meninggal harus diisi',
+            'tanggal.required' => 'Tanggal harus diisi',
+        ]);
         $tracking = new Tracking();
         $tracking->id_rw = $request->id_rw;
         $tracking->positif = $request->positif;
@@ -52,7 +63,18 @@ class trackingController extends Controller
 
 
     public function update(Request $request, $id)
-    {
+    { $request->validate([
+        'positif' => 'required:trackings',
+        'sembuh' => 'required:trackings',
+        'meninggal' => 'required:trackings',
+        'tanggal' => 'required:trackings'
+    ], [
+        'positif.required' => 'Jumlah pasien sembuh harus diisi',
+        'sembuh.required' => 'Jumlah pasien sembuhharus diisi',
+        'meninggal.required' => 'Jumlah pasien meninggal harus diisi',
+        'tanggal.required' => 'Tanggal harus diisi',
+    ]);
+
         $tracking = Tracking::findOrFail($id);
         $tracking->id_rw = $request->id_rw;
         $tracking->positif = $request->positif;
