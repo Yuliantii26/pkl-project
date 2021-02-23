@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Template - Index</title>
+  <title>Tracking Covid - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,50 +40,34 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
-    <div class="container d-flex">
+    <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">TrackingCovid</a></h1>
+        <h1 class="text-light"><a href="index.html">Tracking Covid</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-
-          <!-- <li class="drop-down"><a href="#">About</a>
-            <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="team.html">Team</a></li>
-
-              <li class="drop-down"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li> -->
+        <li class="active"></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#datakasus">Data kasus</a></li>
+          <li><a href="#provinsi">Provinsi</a></li>
+          <li><a href="#global">Global</a></li>
+          <li><a href="#services">Tentang</a></li>
+          <li><a href="#footer">Contact</a></li>
 
           
-          <li><a href="provinsi.html">Data Provinsi</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-
-          <!-- <li class="get-started"><a href="#get-started">Get Started</a></li> -->
         </ul>
       </nav><!-- .nav-menu -->
-
+<!-- <li class="get-started"><a href="#get-started">Get Started</a></li> -->
     </div>
+    
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
+  <!-- ======= home Section ======= -->
+  <section id="home">
     <div class="hero-container" data-aos="fade-up">
       <h1>TRACKING COVID19</h1>
       <h2></h2>
@@ -93,10 +77,12 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
+    <!-- ======= Data Kasus Section ======= -->
     <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
+      <div class="container" >
+      <div class="section-title" data-aos="zoom-out">
+      <br><h2>Data Kasus Covid-19</h2>
+      </div>
         <div class="row justify-content-end">
           <div class="col-lg-11">
             <div class="row justify-content-end">
@@ -104,7 +90,7 @@
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box py-5">
                   <i class="icofont-worried"></i>
-                  <p>Jumlah positif</p>
+                  <p>Total positif</p>
                   <span data-toggle="counter-up">{{$positif}}</span>
                   <p>Orang</p>
                 </div>
@@ -113,7 +99,7 @@
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box py-5">
                   <i class="icofont-simple-smile"></i>
-                  <p> Jumlah Sembuh</p>
+                  <p> Total Sembuh</p>
                   <span data-toggle="counter-up">{{$sembuh}}</span>
                   <p>Orang</p>
                 </div>
@@ -122,7 +108,7 @@
               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box pb-5 pt-0 pt-lg-5">
                   <i class="icofont-crying"></i>
-                  <p> Jumlah Meninggal</p>
+                  <p> Total Meninggal</p>
                   <span data-toggle="counter-up">{{$meninggal}}</span>
                   <p>Orang</p>
                 </div>
@@ -140,7 +126,8 @@
             </div>
           </div>
         </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End About Section -->
 
     <!-- ======= Table Section Provinsi ======= -->
     <section id="provinsi" class="provinsi">
@@ -242,36 +229,36 @@
         <div class="row">
           <div class="col-md-12 col-xl-6">
             <div class="icon-box" data-aos="fade-up">
-              <div class="icon"><i class="card text-white bg-orange"></i></div>
-              <h4 class="title"><a href="https://www.unicef.org/indonesia/id/coronavirus">Novel Coronavirus (COVID-19)</a></h4>
-              <p class="description">Hal-hal yang perlu anda ketahui</p>
+              <div class="icon"><i class="card text-white "></i></div>
+              <h4 class="title"><a href="">Apa Itu Virus Corona ?</a></h4>
+              <p class="description">Coronavirus adalah kumpulan virus yang bisa menginfeksi sistem pernapasan.
+               Pada banyak kasus, virus ini hanya menyebabkan infeksi pernapasan ringan, seperti flu. 
+               Namun, virus ini juga bisa menyebabkan infeksi pernapasan berat,
+                seperti infeksi paru-paru (pneumonia).</p>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="icon-box" data-aos="fade-up">
-              <div class="icon"><i class="" style="color: color: #ff689b;"></i></div>
-              <h4 class="title"><a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona"> Daftar Rumah Sakit</a></h4>
-              <p class="description">Daftar 100 Rumah Sakit Rujukan Penanganan Virus Corona</p>
-            </div>
-          </div>
+        
 
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href="https://infeksiemerging.kemkes.go.id/">Media Informasi</a></h4>
-              <p class="description">Media informasi resmi penyakit Infeksi Emerging</p>
+              <h4 class="title"><a href=""> Yang Perlu Anda Ketahui</a></h4>
+              <p class="description">Gejala Awal infeksi virus Corona atau COVID-19 bisa menyerupai gejala flu, 
+              yaitu demam, pilek, batuk kering, sakit tenggorokan, dan sakit kepala. 
+              Setelah itu, gejala dapat hilang dan sembuh atau malah memberat. 
+              Penderita dengan gejala yang berat bisa mengalami demam tinggi, 
+              batuk berdahak bahkan berdarah, sesak napas, dan nyeri dada. 
+              Gejala-gejala tersebut muncul ketika tubuh bereaksi melawan virus Corona.
+              Secara umum, ada 3 gejala umum yang bisa menandakan seseorang terinfeksi virus Corona, yaitu:<br>
+                 -Demam (suhu tubuh di atas 38 derajat Celsius)<br>
+                 -Batuk kering<br>
+                 -Sesak napas</p>
             </div>
-          </div>
-          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"> Coronavirus Disease(COVID-19)</a></h4>
-              <p class="description">Coronavirus Disease advice for the public</p>
-            </div>
-          </div>
+         
 
       </div>
     </section><!-- End Services Section -->
+    
 
   </main><!-- End #main -->
 
@@ -281,20 +268,35 @@
       <div class="container">
         <div class="row">
 
-         
+          <!-- <div class="col-lg-3 col-md-6 footer-info">
+            <h3>Serenity</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div> -->
 
-          
+          <div class="col-lg-3 col-md-12 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">Data kasus</a></li>
+            <li><a href="#provinsi">Provinsi</a></li>
+            <li><a href="#global">Global</a></li>
+            <li><a href="#services">Tentang</a></li>
+            <li><a href="#footer">Contact</a></li>
+              
+            
 
-          <div class="col-lg-3 col-md-6 footer-contact">
-           <center> <h4>Contact Us</h4>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact">
+            <h4>Tracking covid</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              JL.Situtarate - Cibaduyut <br>
+              Kab.Bandung<br>
+              
+              <strong>Phone:</strong> +62 819 9107 9164<br>
+              <strong>Email:</strong> smkassalaam<br>
             </p>
-            </center>
 
             <div class="social-links">
               <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
@@ -306,22 +308,27 @@
 
           </div>
 
-          
+          <!-- <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div> -->
 
         </div>
       </div>
     </div>
-
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Serenity</span></strong>. All Rights Reserved
+        &copy; Hak Cipta <strong><span>Serenity</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/serenity-bootstrap-corporate-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+       <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer><!-- End Footer -->

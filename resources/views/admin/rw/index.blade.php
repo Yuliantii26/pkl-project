@@ -16,7 +16,7 @@
                 <tr>
                      <th scope="col">No</th>
                      <th scope="col">Id Rw</th>
-                     <th scope="col">No Rw</th>
+                     <th scope="col"> Rw</th>
                      <th scope="col">Nama Kelurahan</th>
                      <th scope="col">Action</th>
                 </tr>
@@ -28,7 +28,7 @@
                     <tr>
                         <th scope="row">{{$no++}}</th>
                         <td>{{$data->id_rw}}</td>
-                        <td>{{$data->nama_rw}}</td>
+                        <td>{{$data->rw}}</td>
                         <td>{{$data->kelurahan->nama_kelurahan}}</td>
                      <td>
                      <form action="{{route('rw.destroy',$data->id)}}" method="POST">

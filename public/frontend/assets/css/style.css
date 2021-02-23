@@ -456,7 +456,7 @@ section {
 }
 
 .section-bg {
-  background-color: #f36a6aec;
+  background-color: #addde6ec;
 }
 
 .section-title {
@@ -1318,7 +1318,7 @@ section {
 .contact .php-email-form .error-message {
   display: none;
   color: #fff;
-  background: #ed3c0d;
+  background: #fad5cb;
   text-align: left;
   padding: 15px;
   font-weight: 600;

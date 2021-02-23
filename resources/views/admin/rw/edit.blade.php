@@ -17,16 +17,16 @@
                     
                     </div>
                     <div class='form-group'>
-                         <label for="">Nama Rw</label>
-                         <input type="text" name="nama_rw" class="form-control" value="{{$rw->nama_rw}}" required>
-                         @if($errors->has('nama_rw'))
-                                <span class="text-danger">{{$errors->first('nama_rw')}}</span>
+                         <label for="">Rw</label>
+                         <input type="number" name="rw" class="form-control" value="{{$rw->rw}}" required>
+                         @if($errors->has('rw'))
+                                <span class="text-danger">{{$errors->first('rw')}}</span>
                             @endif
                     </div>
                     <label>Nama Kelurahan</label>
-                    <select name="id_kelurahan" class="form-control" required>
+                    <select name="nama_kelurahan" class="form-control" required>
                         @foreach ($kelurahan as $data)
-                        <option value="{{$data->id}}" {{$data->id == $rw->id_kelurahan ? 'selected' : ''}} >{{$data->nama_kelurahan}}</option>
+                        <option value="{{$data->id}}" {{$data->id == $rw->nama_kelurahan ? 'selected' : ''}} >{{$data->nama_kelurahan}}</option>
                         @endforeach
                     </select>
                     <div class='form-group'>

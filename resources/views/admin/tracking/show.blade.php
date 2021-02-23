@@ -9,7 +9,7 @@
 
              <div class="mb-3">
                    <label for="exampleInputPassword1" class="form-label">Rw</label>
-                   <input type="text" value="{{$tracking->rw->nama_rw}}" class="form-control" name="id_rw" readonly>      
+                   <input type="text" value="{{$tracking->rw->rw}}" class="form-control" name="id_rw" readonly>      
              </div>
              <div class="mb-3">
              <div class="form-group">

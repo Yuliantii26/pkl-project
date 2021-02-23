@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+    Dashboard 
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -25,17 +25,15 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="{{asset('assets/img/logo-small.png ')}}">
+        <a href="" class="simple-text logo-mini">
+          <div class="logo-image-yuli">
+            <!-- <img src="{{asset('assets/img/yuli.jpg ')}}"> -->
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
-          <!-- <div class="logo-image-big">
-            <img src="{{asset('assets/img/logo-big.png' ) }}">
-          </div> -->
+        <a href="" class="simple-text logo-normal">
+           Tracking
+          
         </a>
       </div>
       @include('layouts.components.sidebar')

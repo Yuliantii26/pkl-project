@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\DB;
-use App\Models\Kota;
-use App\Models\Kecamatan;
-use App\Models\Kelurahan;
-use App\Models\Rw;
-use App\Models\Tracking;
+use App\Models\kota;
+use App\Models\kecamatan;
+use App\Models\kelurahan;
+use App\Models\rw;
+use App\Models\tracking;
 use Illuminate\Http\Request;
 
 class trackingController extends Controller
@@ -63,18 +63,8 @@ class trackingController extends Controller
 
 
     public function update(Request $request, $id)
-    { $request->validate([
-        'positif' => 'required:trackings',
-        'sembuh' => 'required:trackings',
-        'meninggal' => 'required:trackings',
-        'tanggal' => 'required:trackings'
-    ], [
-        'positif.required' => 'Jumlah pasien sembuh harus diisi',
-        'sembuh.required' => 'Jumlah pasien sembuhharus diisi',
-        'meninggal.required' => 'Jumlah pasien meninggal harus diisi',
-        'tanggal.required' => 'Tanggal harus diisi',
-    ]);
-
+    {
+        
         $tracking = Tracking::findOrFail($id);
         $tracking->id_rw = $request->id_rw;
         $tracking->positif = $request->positif;

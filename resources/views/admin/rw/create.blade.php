@@ -13,18 +13,20 @@
                       @csrf
                     <div class='form-group'>
                          <label for="">Id Rw</label>
-                         <input type="text" name="id_rw" class="form-control" id="" required>
-                         
-                    </div>
-                    <div class='form-group'>
-                         <label for="">Nama Rw</label>
-                         <input type="number" name="nama_rw" class="form-control" id="" required>
-                         @if($errors->has('nama_rw'))
-                                <span class="text-danger">{{$errors->first('nama_rw')}}</span>
+                         <input type="text" name="id_rw" class="form-control" id="" >
+                         @if($errors->has('id_rw'))
+                                <span class="text-danger">{{$errors->first('id_rw')}}</span>
                             @endif
                     </div>
-                    <label>Nama kelusrahan</label>
-                    <select name="id_kelurahan" class="form-control">
+                    <div class='form-group'>
+                         <label for="">Rw</label>
+                         <input type="number" name="rw" class="form-control" id="" >
+                         @if($errors->has('rw'))
+                                <span class="text-danger">{{$errors->first('rw')}}</span>
+                            @endif
+                    </div>
+                    <label>Nama kelurahan</label>
+                    <select name="nama_kelurahan" class="form-control">
                         @foreach ($kelurahan as $data)
                         <option value="{{$data->id}}">{{$data->nama_kelurahan}}</option>
                         @endforeach

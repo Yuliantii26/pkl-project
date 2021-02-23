@@ -34,7 +34,7 @@
         <div class="form-group">
         <label class="">kelurahan</label>
         <select name="" wire:model="selectedKelurahan" class="form-control">
-            <option value=''>Pilih Kecamatan</option>
+            <option value=''>Pilih Kelurahan</option>
             @foreach($kelurahans as $kelurahan)
                 <option value={{ $kelurahan->id }}>{{ $kelurahan->nama_kelurahan }}</option>
             @endforeach
@@ -46,7 +46,7 @@
         <select name="id_rw" wire:model="selectedRw" class="form-control">
             <option value=''>Pilih RW</option>
             @foreach($rws as $rw)
-                <option value={{ $rw->id }}>{{ $rw->nama_rw }}</option>
+                <option value={{ $rw->id }}>{{ $rw->rw }}</option>
             @endforeach
         </select>
     </div>

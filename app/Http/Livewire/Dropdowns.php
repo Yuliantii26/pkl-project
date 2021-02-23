@@ -45,7 +45,7 @@ class Dropdowns extends Component
                 $this->SelectedProvinsi = $rw->kelurahan->kecamatan->kota->id_provinsi;
                 $this->SelectedKota = $rw->kelurahan->kecamatan->id_kota;
                 $this->SelectedKecamatan = $rw->kelurahan->id_kecamatan;
-                $this->SelectedKelurahan = $rw->id_kelurahan;
+                $this->SelectedKelurahan = $rw->nama_kelurahan;
             }
         }
 
@@ -80,7 +80,7 @@ class Dropdowns extends Component
     public function updatedSelectedKelurahan($kelurahan)
     {
         if (!is_null($kelurahan)) {
-            $this->rws = Rw::where('id_kelurahan', $kelurahan)->get();
+            $this->rws = Rw::where('nama_kelurahan', $kelurahan)->get();
         } else {
             $this->selectedRw = null;
         }

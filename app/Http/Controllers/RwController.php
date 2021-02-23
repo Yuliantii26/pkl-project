@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rw;
-use App\Models\Kelurahan;
+use App\Models\rw;
+use App\Models\kelurahan;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
@@ -43,12 +43,27 @@ class RwController extends Controller
      */
     public function store(Request $request)
     {
+        //validasi
+        $request->validate(
+            [
+                'id_rw' => 'required|max:5|unique:rws',
+                'rw' => 'required|unique:rws',
+            ],
+            [
+                'id_rw.required' => 'Id Harus Diisi',
+                'id_rw.unique' => 'Id Maksimal 5 Nomor',
+                'id_rw.unique' => 'Id Sudah Dipakai',
+                'rw.required' =>' nama rw Harus Diisi',
+                'rw.unique' => 'Kode Sudah Dipakai',
+            ] );
+        
         
         
         $rw= new Rw();
-        $rw->id_kelurahan = $request->id_kelurahan;
+        
         $rw->id_rw = $request->id_rw;
-        $rw->nama_rw= $request->nama_rw;
+        $rw->rw= $request->rw;
+        $rw->nama_kelurahan = $request->nama_kelurahan;
         $rw->save();
         return redirect()->route('rw.index')
             ->with(['message'=>'Data Berhasil Dibuat']);
@@ -91,9 +106,9 @@ class RwController extends Controller
         
         
         $rw = Rw::findOrFail($id);
-        $rw->id_kelurahan= $request->id_kelurahan;
+        $rw->nama_kelurahan= $request->nama_kelurahan;
         $rw->id_rw= $request->id_rw;
-        $rw->no_rw = $request->no_rw;
+        $rw->rw = $request->rw;
         $rw->save();
         return redirect()->route('rw.index')
             ->with(['message'=>'Data Berhasil Diedit']);

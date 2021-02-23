@@ -14,8 +14,8 @@
                          <input type="text" name="id_rw" class="form-control" value="{{$rw->id_rw}}" id="" readonly>
                     </div>
                     <div class='form-group'>
-                         <label for="">Nama Rw</label>
-                         <input type="text" name="nama_rw" class="form-control" value="{{$rw->nama_rw}}" readonly>
+                         <label for="">Rw</label>
+                         <input type="text" name="rw" class="form-control" value="{{$rw->rw}}" readonly>
                     </div>
                     <div class='form-group'>
                         <label for="">Nama kelurahan</label>
