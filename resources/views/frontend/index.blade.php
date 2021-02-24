@@ -67,7 +67,7 @@
   </header><!-- End Header -->
 
   <!-- ======= home Section ======= -->
-  <section id="home">
+  <section id="hero">
     <div class="hero-container" data-aos="fade-up">
       <h1>TRACKING COVID19</h1>
       <h2></h2>
@@ -77,7 +77,7 @@
 
   <main id="main">
 
-    <!-- ======= Data Kasus Section ======= -->
+    <!-- ======= Data Section ======= -->
     <section id="about" class="about">
       <div class="container" >
       <div class="section-title" data-aos="zoom-out">
@@ -272,7 +272,7 @@
             <h3>Serenity</h3>
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
           </div> -->
-
+           
           <div class="col-lg-3 col-md-12 footer-links">
             <h4>Useful Links</h4>
             <ul>
@@ -298,13 +298,13 @@
               <strong>Email:</strong> smkassalaam<br>
             </p>
 
-            <div class="social-links">
+            <!-- <div class="social-links">
               <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
               <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
               <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
               <a href="#" class="google-plus"><i class="icofont-skype"></i></a>
               <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
-            </div>
+            </div> -->
 
           </div>
 
@@ -319,7 +319,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <!-- <div class="container">
       <div class="copyright">
         &copy; Hak Cipta <strong><span>Serenity</span></strong>. All Rights Reserved
       </div>
@@ -328,10 +328,10 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/serenity-bootstrap-corporate-template/ -->
-       <a href="https://bootstrapmade.com/">BootstrapMade</a>
+       <!-- <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
-    </div>
-  </footer><!-- End Footer -->
+    </div> -->
+  </footer>End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

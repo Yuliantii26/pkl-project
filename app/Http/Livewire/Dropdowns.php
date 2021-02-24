@@ -38,7 +38,7 @@ class Dropdowns extends Component
             $rw = Rw::with('kelurahan.kecamatan.kota.provinsi')->find($selectedRw);
             if($rw)
             {
-                $this->rws = RW::where('id_kelurahan', $rw->id_kelurahan)->get();
+                $this->rws = RW::where('nama_kelurahan', $rw->nama_kelurahan)->get();
                 $this->kelurahans = Kelurahan::where('id_kecamatan',$rw->kelurahan->id_kecamatan)->get();
                 $this->kecamatans = Kecamatan::where('id_kota',$rw->kelurahan->kecamatan->id_kota)->get();
                 $this->kotas = Kota::where('id_provinsi',$rw->kelurahan->kecamatan->kota->id_provinsi)->get();

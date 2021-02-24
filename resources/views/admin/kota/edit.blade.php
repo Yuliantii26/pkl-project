@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Provinsi</label>
-                            <select class="form-control" name="id_provinsi" id="exampleFormControlSelect1">
+                            <select class="form-control" name="nama_provinsi" id="exampleFormControlSelect1">
                                 @foreach($provinsi as $data)
                                 <option value="{{$data->id}}"
                                     @if($data->nama_provinsi == $kota->provinsi->nama_provinsi)

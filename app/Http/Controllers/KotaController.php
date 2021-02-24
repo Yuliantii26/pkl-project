@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kota;
-use App\Models\Provinsi;
+use App\Models\kota;
+use App\Models\provinsi;
 use App\Http\Controller\DB;
 use Illuminate\Http\Request;
 

@@ -22,7 +22,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Id Provinsi</th>
-                                    <th scope="col">Id Kota</th>
+                                    <th scope="col">kode kota </th>
                                     <th scope="col">Nama Kota</th>
                                     <th scope="col">Nama Provinsi</th>
                                     <th scope="col">Action</th>
