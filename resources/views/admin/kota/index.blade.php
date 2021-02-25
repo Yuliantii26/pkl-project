@@ -24,7 +24,6 @@
                                     <th scope="col">Id Provinsi</th>
                                     <th scope="col">kode kota </th>
                                     <th scope="col">Nama Kota</th>
-                                    <th scope="col">Nama Provinsi</th>
                                     <th scope="col">Action</th>
  
                                 </tr>
@@ -37,7 +36,7 @@
                                     <td>{{$data->id_provinsi }}</td>
                                     <td>{{$data->kode_kota}}</td>
                                     <td>{{$data->nama_kota}}</td>
-                                    <td>{{$data->provinsi->nama_provinsi}}</td>
+                                    
                                     <td>
                                         <form action="{{ route('kota.destroy',$data->id)}}" method="POST">
                                             @csrf 

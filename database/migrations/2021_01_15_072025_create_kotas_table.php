@@ -14,14 +14,11 @@ class CreateKotasTable extends Migration
     public function up()
     {
         Schema::create('kotas', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_provinsi');
-            $table->string('kode_kota');
-            $table->string('nama_kota');
+            $table->bigIncrements('id');
+            $table->foreignId('id_provinsi')->constrained('provinsis')->onUpdate('cascade')->onDelete('cascade');
+            $table->String('kode_kota');
+            $table->String('nama_kota');
             $table->timestamps();
-            
-            $table->foreign('id_provinsi')->references('id')
-                  ->on('provinsis')->onDelete('cascade');
         });
     }
 

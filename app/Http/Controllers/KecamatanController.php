@@ -59,9 +59,9 @@ class KecamatanController extends Controller
                 'nama_kecamatan.unique' => 'Kode Sudah Dipakai',
             ] );
         $kecamatan = new Kecamatan();
+        $kecamatan->id_kota=$request->id_kota;
         $kecamatan->kode_kecamatan=$request->kode_kecamatan;
         $kecamatan->nama_kecamatan=$request->nama_kecamatan;
-        $kecamatan->id_kota=$request->id_kota;
         $kecamatan->save();
         return redirect()->route('kecamatan.index')->with(['message'=>'Data berhasil dibuat']);
     }
@@ -74,8 +74,9 @@ class KecamatanController extends Controller
      */
     public function show($id)
     {
+        $kota = Kota::all();
         $kecamatan = Kecamatan::findOrFail($id);
-        return view('admin.kecamatan.show', compact('kecamatan'));
+        return view('admin.kecamatan.show', compact('kecamatan','kota'));
     }
 
     /**
@@ -86,8 +87,8 @@ class KecamatanController extends Controller
      */
     public function edit($id)
     {
-        $kecamatan = Kecamatan::findOrFail($id);
         $kota = Kota::all();
+        $kecamatan = Kecamatan::findOrFail($id);
         return view('admin.kecamatan.edit',compact('kecamatan','kota'));
     }
 

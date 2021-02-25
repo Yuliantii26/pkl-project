@@ -44,12 +44,25 @@ class ProvinsiController extends Controller
      */
     public function store(Request $request)
     {
-         
+         //validasi
+         $request->validate(
+            [
+                'kode_provinsi' => 'required|max:5|unique:provinsis',
+                'nama_provinsi' => 'required|unique:provinsis',
+            ],
+            [
+                'kode_provinsi.required' => 'Kode Harus Diisi',
+                'kode_provinsi.unique' => 'Kode Maksimal 5 Nomor',
+                'kode_provinsi.unique' => 'Kode Sudah Dipakai',
+                'nama_provinsi.required' =>' Nama Provinsi Harus Diisi',
+                'nama_provinsi.unique' => 'Kode Sudah Dipakai',
+            ] );
+        
         $provinsi = new Provinsi();
         $provinsi->kode_provinsi = $request->kode_provinsi;
         $provinsi->nama_provinsi = $request->nama_provinsi;
         $provinsi->save();
-        return redirect()->route('provinsi.index');
+        return redirect()->route('provinsi.index')->with(['message'=>'Data berhasil dibuat']);
     }
 
     /**
@@ -84,12 +97,13 @@ class ProvinsiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {    
+    {
+         
         $provinsi = Provinsi::findOrFail($id);
         $provinsi->kode_provinsi = $request->kode_provinsi;
         $provinsi->nama_provinsi = $request->nama_provinsi;
         $provinsi->save();
-        return redirect()->route('provinsi.index');
+        return redirect()->route('provinsi.index')->with(['message'=>'Data berhasil di edit!']);
     }
 
     /**
@@ -102,6 +116,6 @@ class ProvinsiController extends Controller
     {
         $provinsi = Provinsi::findOrFail($id);
         $provinsi->delete();
-        return redirect()->route('provinsi.index');
+        return redirect()->route('provinsi.index')->with(['message'=>'Data berhasil dihapus!']);
     }
 }

@@ -9,7 +9,7 @@ class Rw extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'rw', 'id_rw', 'nama_kelurahan'];
+    protected $fillable = ['id', 'rw', 'nama_kelurahan'];
     public $timestamps = true;
 
     public function kelurahan()

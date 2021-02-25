@@ -48,7 +48,7 @@ class KotaController extends Controller
             [
                 'kode_kota' => 'required|max:5|unique:kotas',
                 'nama_kota' => 'required|unique:kotas',
-                'id_kota' => 'required|unique:kotas',
+                
             ],
             [
                 'kode_kota.required' => 'Kode Harus Diisi',
@@ -74,8 +74,9 @@ class KotaController extends Controller
      */
     public function show($id)
     {
+        $provinsi = Provinsi::all();
         $kota = Kota::findOrFail($id);
-        return view('admin.kota.show', compact('kota'));
+        return view('admin.kota.show', compact('kota','provinsi'));
     }
 
     /**
@@ -86,9 +87,9 @@ class KotaController extends Controller
      */
     public function edit($id)
     {
-        $kota = Kota::findOrFail($id);
         $provinsi = Provinsi::all();
-        return view('admin.kota.edit', compact('kota','provinsi'));
+        $kota = Kota::findOrFail($id);
+        return view('admin.kota.edit',compact('kota','provinsi'));
     }
 
     /**
