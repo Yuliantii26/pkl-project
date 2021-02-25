@@ -14,10 +14,9 @@ class CreateRwsTable extends Migration
     public function up()
     {
         Schema::create('rws', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('nama_kelurahan')->constrained('kelurahans')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('id_rw');
-            $table->String('rw');
+            $table->id();
+            $table->unsignedInteger('id_kelurahan');
+            $table->string('nama_rw');
             $table->timestamps();
         });
     }

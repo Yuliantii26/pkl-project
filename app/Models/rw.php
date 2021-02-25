@@ -9,16 +9,16 @@ class Rw extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'rw', 'nama_kelurahan'];
+    protected $fillable = ['nama_rw','id_kelurahan'];
     public $timestamps = true;
 
     public function kelurahan()
     {
-        return $this->belongsTo('App\Models\Kelurahan', 'nama_kelurahan');
+        return $this->belongsTo('App\Models\Kelurahan','id_kelurahan');
     }
 
-    public function tracking()
+    public function kasus()
     {
-        return $this->hasMany('App\Models\tracking', 'id_tracking');
+        return $this->hasMany('App/Models/Kasus','id_rw');
     }
 }
