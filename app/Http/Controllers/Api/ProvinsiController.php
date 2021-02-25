@@ -5,133 +5,254 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Provinsi;
-use Validator;
-class ProvinsiController extends Controller
+use App\Models\Rw;
+use App\Models\Tracking;
+use DB;
+
+class ApiController extends Controller
 {
-    public function index()
+    public function track()
     {
-        $provinsi = Provinsi::latest()->get();
-        return response([
+        $track = DB::table('trackings')
+        ->select(
+            DB::raw('SUM(positif) as positif'),
+            DB::raw('SUM(sembuh) as sembuh'),
+            DB::raw('SUM(meninggal) as meninggal'))
+            ->join('rws','rws.id','=','trackings.id_rw')
+            ->join('kelurahans','kelurahans.id','=','rws.id_kelurahan')
+            ->join('kecamatans','kecamatans.id','=','kelurahans.id_kecamatan')
+            ->join('kotas','kotas.id','=','kecamatans.id_kota')
+            ->join('provinsis','provinsis.id','=','kotas.id_provinsi')
+            ->get();
+        $response = [
             'success' => true,
-            'message' => 'List Semua Provinsi',
-            'data' => $provinsi
-        ], 200);
+            'data' => [$track],
+            'message' => 'Berhasil'
+        ];
+        return response()->json($response, 200);
     }
-
-    public function store(Request $request)
+    public function provinsi()
     {
-        //  Validate Data
-        $validator = Validator::make($request->all(),[
-            'kode_provinsi' =>  'required|unique:provinsis',
-            'nama_provinsi' =>  'required',
-        ],
-            [
-                'kode_provinsi.required' => 'Masukkan Kode Provinsi !',
-                'nama_provinsi.required' => 'Masukkan Nama Provinsi !',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Silahkan Isi Data Yang Kosong',
-                'data'  => $validator->errors()
-            ], 400);
-        } else{
-            $provinsi = Provinsi::create([
-                'kode_provinsi'     => $request->input('kode_provinsi'),
-                'nama_provinsi'   => $request->input('nama_provinsi'),
-            ]);
-
-            if ($provinsi) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Provinsi Berhasil Disimpan!',
-                ], 200);
-            } else{
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Provinsi Gagal Disimpan!',
-                ], 400);
-            }
-        }
+        $provinsi = DB::table('trackings')
+                ->select(DB::raw('provinsis.nama_provinsi'), 
+                DB::raw('provinsis.kode_provinsi'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.nama_kelurahan')
+    			->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+    			->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
+    			->join('provinsis', 'provinsis.id', '=', 'kotas.id_provinsi')
+    			->groupBy('provinsis.nama_provinsi')
+                ->get();
+        $harini = DB::table('trackings')
+                ->select(DB::raw('provinsis.nama_provinsi'), 
+                DB::raw('provinsis.kode_provinsi'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.nama_kelurahan')
+    			->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+    			->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
+    			->join('provinsis', 'provinsis.id', '=', 'kotas.id_provinsi')
+                ->wheredate('trackings.tanggal', date('Y-m-d'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => ['hari ini' => $harini,
+            'total' => $provinsi],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
     }
 
-    public function show($id)
+ public function kota()
     {
-        $provinsi = Provinsi::whereId($id)->first();
-
-        if ($provinsi) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Detail Provinsi!',
-                'data' => $provinsi
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Provinsi Tidak Ditemukan!',
-                'data' => ''
-            ], 404);
-        }
+        $kota = DB::table('trackings')
+                ->select(DB::raw('kotas.nama_kota'), 
+                DB::raw('kotas.kode_kota'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
+    			->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+    			->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
+    			->groupBy('kotas.nama_kota')
+                ->get();
+        $harini = DB::table('trackings')
+                ->select(DB::raw('kotas.nama_kota'), 
+                DB::raw('kotas.kode_kota'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
+    			->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+    			->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
+                ->wheredate('trackings.tanggal', date('Y-m-d'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => ['hari ini' => $harini,
+            'total' => $kota],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
     }
-
-    public function update(Request $request,$id)
+   
+ public function kecamatan()
     {
-        //Validate Data
-        $validator = Validator::make($request->all(),[
-            'kode_provinsi' => 'required|unique:provinsis',
-            'nama_provinsi' => 'required',
-        ],
-            [
-                'kode_provinsi.required' => 'Masukkan Kode Provinsi!',
-                'nama_provinsi.required' => 'Masukkan Nama Provinsi!',
-            ]
-        );
-
-        if ($validator->fails()) {
-
-            return response()->json([
-                'success' => false,
-                'message' => 'Silahkan Isi Data Yang Kosong!',
-                'data' => $validator->errors()
-            ], 400);
-        } else {
-
-            $provinsi = Provinsi::findOrFail($id);
-            $provinsi->kode_provinsi = $request->kode_provinsi;
-            $provinsi->nama_provinsi = $request->nama_provinsi;
-            $provinsi->save();
-
-            if ($provinsi) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Provinsi Berhasil Diupdate!',
-                ], 200);
-            } else {
-                return response()->json([
-                    'succes' => false,
-                    'message' => 'Provinsi Gagal Diupdate',
-                ], 500);
-            }
-        }
+        $kecamatan = DB::table('trackings')
+                ->select(DB::raw('kecamatans.nama_kecamatan'), 
+                DB::raw('kecamatans.kode_kecamatan'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
+    			->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+    			->groupBy('kecamatans.nama_kecamatan')
+                ->get();
+        $harini = DB::table('trackings')
+                ->select(DB::raw('kecamatans.nama_kecamatan'), 
+                DB::raw('kecamatans.kode_kecamatan'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
+    			->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
+                ->wheredate('trackings.tanggal', date('Y-m-d'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => ['hari ini' => $harini,
+            'total' => $kecamatan],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
     }
 
-    public function destroy($id)
+ public function kelurahan()
     {
-        $provinsi = Provinsi::findOrFail($id);
-        $provinsi->delete();
-
-        if ($provinsi) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Provinsi Berhasil Dihapus!',
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Provinsi Gagal Dihapus!',
-            ], 500);
-        }
+        $kelurahan = DB::table('trackings')
+                ->select(DB::raw('kelurahans.nama_kelurahan'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
+    			->groupBy('kelurahans.nama_kelurahan')
+                ->get();
+        $harini = DB::table('trackings')
+                ->select(DB::raw('kelurahans.nama_kelurahan'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
+                ->wheredate('trackings.tanggal', date('Y-m-d'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => ['hari ini' => $harini,
+            'total' => $kelurahan],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
     }
+    
+ public function rw()
+    {
+        $rw = DB::table('trackings')
+                ->select(DB::raw('rws.rw'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+    			->groupBy('rws.rw')
+                ->get();
+        $harini = DB::table('trackings')
+                ->select(DB::raw('rws.rw'), 
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+    			->join('rws', 'rws.id', '=', 'trackings.id_rw')
+                ->wheredate('trackings.tanggal', date('Y-m-d'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => ['hari ini' => $harini,
+            'total' => $rw],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
+    }
+
+
+    public function indonesia()
+    {
+        $indonesia = DB::table('trackings')
+                ->select(
+                DB::raw('SUM(positif) as positif'), 
+                DB::raw('SUM(sembuh) as sembuh'), 
+                DB::raw('SUM(meninggal) as meninggal'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => [$indonesia],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
+    }
+
+    public function positif()
+    {
+        $positif = DB::table('trackings')
+                ->select(
+                DB::raw('SUM(positif) as positif'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => [$positif],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
+    }
+
+    public function sembuh()
+    {
+        $sembuh = DB::table('trackings')
+                ->select(
+                DB::raw('SUM(sembuh) as sembuh'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => [$sembuh],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
+    }
+
+    public function meninggal()
+    {
+        $meninggal = DB::table('trackings')
+                ->select(
+                DB::raw('SUM(meninggal) as meninggal'))
+                ->get();
+        $response = [
+            'succes' => true,
+            'data' => [$meninggal],
+            'message' => 'berhasil'
+        ];
+    	return response()->json($response, 200);
+    }
+
+
+
+
+    // berdasarkan id
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Provinsi;
+use App\Models\provinsi;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ class ProvinsiController extends Controller
 
     public function index()
     {
-        $provinsi = Provinsi::all();
+        $provinsi = provinsi::all();
         return view('admin.provinsi.index',compact('provinsi'));
     }
 
