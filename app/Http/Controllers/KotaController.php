@@ -63,7 +63,7 @@ class KotaController extends Controller
         $kota->nama_kota = $request->nama_kota;
         $kota->id_provinsi = $request->id_provinsi;
         $kota->save();
-        return redirect()->route('kota.index')->with(['message'=>'Data berhasil dibuat']);
+        return redirect()->route('kota.index');
     }
 
     /**
@@ -108,7 +108,7 @@ class KotaController extends Controller
         $kota->nama_kota = $request->nama_kota;
         $kota->id_provinsi = $request->id_provinsi;
         $kota->save();
-        return redirect()->route('kota.index')->with(['message'=>'Data berhasil di edit!']);
+        return redirect()->route('kota.index');
     }
 
     /**
@@ -120,6 +120,6 @@ class KotaController extends Controller
     public function destroy($id)
     {
         $kota = Kota::findOrFail($id)->delete();
-        return redirect()->route('kota.index')->with(['message'=>'Data berhasil dihapus!']);
+        return redirect()->route('kota.index');
     }
 }

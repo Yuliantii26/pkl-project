@@ -52,7 +52,7 @@
         <ul>
         <li class="active"></li>
           <li><a href="#home">Home</a></li>
-          <li><a href="#datakasus">Data kasus</a></li>
+          <li><a href="#about">Data kasus</a></li>
           <li><a href="#provinsi">Provinsi</a></li>
           <li><a href="#global">Global</a></li>
           <li><a href="#services">Tentang</a></li>
@@ -172,7 +172,35 @@
     <!-- End Table Section provinsi -->
 
     <!-- ======== Table Section Global ======= -->
-    
+    <section id="global" class="global">
+      <div class="container">
+
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Data Kasus Global</h2>
+        </div>
+
+       
+        <div class="card-body" >
+            <div style="height:600px;overflow:auto;margin-right:15px;">
+              <table class="table table-bordered table-striped mb-0 " width="100%">
+                <thead>
+                  <tr>
+                    <th scope="col"><center>No</center></th>
+                    <th scope="col"><center>Negara</center></th>
+                    <th scope="col"><center>Positif</center></th>
+                    <th scope="col"><center>Sembuh</center></th>
+                    <th scope="col"><center>Meninggal</center></th>
+                  </tr>
+                </thead>
+             
+                
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </section>
     <!-- ======== End Table Section Global ======= -->
     
 
@@ -197,9 +225,9 @@
             </div>
           </div>
         
-
+          <div class="row">
           <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon-box">
+            <div class="icon-box" >
               <div class="icon"><i class="" style="color: #3fcdc7;"></i></div>
               <h4 class="title"><a href=""> Yang Perlu Anda Ketahui</a></h4>
               <p class="description">Gejala Awal infeksi virus Corona atau COVID-19 bisa menyerupai gejala flu, 
@@ -213,7 +241,7 @@
                  -Batuk kering<br>
                  -Sesak napas</p>
             </div>
-         
+         </div>
 
       </div>
     </section><!-- End Services Section -->
@@ -222,6 +250,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+  <center>
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -257,23 +286,10 @@
               <strong>Email:</strong> smkassalaam<br>
             </p>
 
-            <!-- <div class="social-links">
-              <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-              <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-              <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="icofont-skype"></i></a>
-              <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
-            </div> -->
-
+            
           </div>
 
-          <!-- <div class="col-lg-3 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div> -->
+          
 
         </div>
       </div>
@@ -290,6 +306,7 @@
        <!-- <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div> -->
+    </center>
   </footer>End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

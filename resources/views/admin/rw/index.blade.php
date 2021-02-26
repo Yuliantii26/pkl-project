@@ -8,7 +8,7 @@
                     Data Rukun Warga
                     <a href="{{route('rw.create')}}"
                        class="btn btn-primary float-right">
-                        Tambah
+                        Tambah Data
                     </a>
                 </div>
                 <div class="card-body">

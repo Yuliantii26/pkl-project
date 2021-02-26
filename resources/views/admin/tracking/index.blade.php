@@ -8,7 +8,7 @@
                    <h3> Data Tracking</h3>
                     <a href="{{route('tracking.create')}}"
                        class="btn btn-primary float-right">
-                        Tambah
+                        Tambah Data
                     </a>
                 </div>
                 <div class="card-body">
