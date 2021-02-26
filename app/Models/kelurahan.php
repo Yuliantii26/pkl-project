@@ -15,11 +15,11 @@ class kelurahan extends Model
 
     public function kecamatan()
     {
-        return $this->belongsTo('App\Models\Kecamatan','id_kecamatan');
+        return $this->belongsTo('App\Models\kecamatan','id_kecamatan');
     }
 
     public function rw()
     {
-        return $this->hasMany('App\Models\Rw','id_rw');
+        return $this->hasMany('App\Models\rw','id_rw');
     }
 }
