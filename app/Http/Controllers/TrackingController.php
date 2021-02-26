@@ -13,14 +13,14 @@ class trackingController extends Controller
 {
     public function index()
     {
-        $tracking = Tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->orderBy('id','DESC')->get();
+        $tracking = tracking::with('rw.kelurahan.kecamatan.kota.provinsi')->orderBy('id','DESC')->get();
         // dd($tracking);
         return view('admin.tracking.index',compact('tracking'));
     }
 
     public function create()
     {
-        $rw = Rw::all();
+        $rw = rw::all();
         return view('admin.tracking.create',compact('rw'));
     }
 
@@ -37,7 +37,7 @@ class trackingController extends Controller
             'meninggal.required' => 'Jumlah pasien meninggal harus diisi',
             'tanggal.required' => 'Tanggal harus diisi',
         ]);
-        $tracking = new Tracking();
+        $tracking = new tracking();
         $tracking->id_rw = $request->id_rw;
         $tracking->positif = $request->positif;
         $tracking->sembuh = $request->sembuh;
@@ -49,7 +49,7 @@ class trackingController extends Controller
 
     public function show($id)
     {
-        $tracking = Tracking::findOrFail($id);
+        $tracking = tracking::findOrFail($id);
         return view('admin.tracking.show',compact('tracking'));
     }
 
@@ -57,7 +57,7 @@ class trackingController extends Controller
     public function edit($id)
     {
         $rw = Rw::all();
-        $tracking = Tracking::findOrFail($id);
+        $tracking = tracking::findOrFail($id);
         return view('admin.tracking.edit',compact('tracking','rw'));
     }
 
@@ -65,7 +65,7 @@ class trackingController extends Controller
     public function update(Request $request, $id)
     {
         
-        $tracking = Tracking::findOrFail($id);
+        $tracking = tracking::findOrFail($id);
         $tracking->id_rw = $request->id_rw;
         $tracking->positif = $request->positif;
         $tracking->sembuh = $request->sembuh;
@@ -77,7 +77,7 @@ class trackingController extends Controller
 
     public function destroy($id)
     {
-        $tracking = Tracking::findOrFail($id);
+        $tracking = tracking::findOrFail($id);
         $tracking->delete();
         return redirect()->route('tracking.index');
     }

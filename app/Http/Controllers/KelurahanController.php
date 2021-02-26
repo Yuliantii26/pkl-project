@@ -21,7 +21,7 @@ class KelurahanController extends Controller
 
     public function create()
     {
-        $kecamatan = Kecamatan::all();
+        $kecamatan = kecamatan::all();
         return view('admin.kelurahan.create',compact('kecamatan'));
     }
 
@@ -42,7 +42,7 @@ class KelurahanController extends Controller
             'nama_kelurahan.unique' => 'Kode Sudah Dipakai',
         ] );
        
-        $kelurahan = new Kelurahan();
+        $kelurahan = new kelurahan();
         $kelurahan->id_kelurahan = $request->id_kelurahan;
         $kelurahan->nama_kelurahan = $request->nama_kelurahan;
         $kelurahan->id_kecamatan = $request->id_kecamatan;
@@ -53,15 +53,15 @@ class KelurahanController extends Controller
 
     public function show($id)
     {
-        $kecamatan = Kecamatan::all();
-        $kelurahan = Kelurahan::findOrFail($id);
+        $kecamatan = kecamatan::all();
+        $kelurahan = kelurahan::findOrFail($id);
         return view('admin.kelurahan.show',compact('kelurahan','kecamatan'));
     }
 
     public function edit($id)
     {
-        $kecamatan = Kecamatan::all();
-        $kelurahan = Kelurahan::findOrFail($id);
+        $kecamatan = kecamatan::all();
+        $kelurahan = kelurahan::findOrFail($id);
         return view('admin.kelurahan.edit',compact('kelurahan','kecamatan'));
 
     }
@@ -69,7 +69,7 @@ class KelurahanController extends Controller
     public function update(Request $request, $id)
     {
         
-        $kelurahan = Kelurahan::findOrFail($id);
+        $kelurahan = kelurahan::findOrFail($id);
         $kelurahan->id_kelurahan=$request->id_kelurahan;
         $kelurahan->nama_kelurahan = $request->nama_kelurahan;
         $kelurahan->id_kecamatan = $request->id_kecamatan;
@@ -80,7 +80,7 @@ class KelurahanController extends Controller
 
     public function destroy($id)
     {
-        $kelurahan = Kelurahan::findOrFail($id)->delete();
+        $kelurahan = kelurahan::findOrFail($id)->delete();
         return redirect()->route('kelurahan.index')
                 ->with(['message'=>'Data kelurahan berhasil dihapus']);
     }

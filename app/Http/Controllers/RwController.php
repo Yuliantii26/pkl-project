@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\rw;
-use App\Models\Kelurahan;
+use App\Models\kelurahan;
 use Illuminate\Http\Request;
 
 class RwController extends Controller
@@ -16,7 +16,7 @@ class RwController extends Controller
 
     public function create()
     {
-        $kelurahan = Kelurahan::all();
+        $kelurahan = kelurahan::all();
         return view('admin.rw.create',compact('kelurahan'));
     }
 
@@ -38,7 +38,7 @@ class RwController extends Controller
 
     public function edit($id)
     {
-        $kelurahan = Kelurahan::all();
+        $kelurahan = kelurahan::all();
         $rw = rw::findOrFail($id);
         return view('admin.rw.edit',compact('rw','kelurahan'));
     }
