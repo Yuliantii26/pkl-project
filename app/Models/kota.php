@@ -17,7 +17,7 @@ class Kota extends Model
         return $this->belongsTo('App\Models\provinsi','id_provinsi');
     }
     public function kecamatan(){
-        return $this->hasMany('App\Models\Kecamatan','id_kota');
+        return $this->hasMany('App\Models\kecamatan','id_kota');
     }
     use HasFactory;
 }
