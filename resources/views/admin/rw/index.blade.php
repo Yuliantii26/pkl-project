@@ -19,7 +19,7 @@
                                     <th>No</th>
                                     <th>Rukun Warga</th>
                                     <th>kelurahan</th>
-                                    <th>Aksi</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,7 +35,7 @@
                               <a href="{{ route('rw.edit', $data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                               <a href="{{ route('rw.show', $data->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i> </a>
                               <button type="submit" class="btn btn-danger btn-sm"><img src="https://img.icons8.com/metro/15/000000/trash.png"/></i></button>
-                                   </form>
+                                </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -48,4 +48,3 @@
     </div>
 </div>
 @endsection
-

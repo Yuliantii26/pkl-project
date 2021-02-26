@@ -47,7 +47,6 @@
                                 <form action="{{route('tracking.destroy',$data->id)}}" method="POST">
                               @csrf @method('delete')
                               <a href="{{route('tracking.edit',$data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="{{route('tracking.show',$data->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
                               <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ? ')"><img src="https://img.icons8.com/metro/15/000000/trash.png"/></button>
                                     </form>
                                 </td>

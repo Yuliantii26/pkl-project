@@ -58,7 +58,7 @@ class ProvinsiController extends Controller
                 'nama_provinsi.unique' => 'Kode Sudah Dipakai',
             ] );
         
-        $provinsi = new Provinsi();
+        $provinsi = new provinsi();
         $provinsi->kode_provinsi = $request->kode_provinsi;
         $provinsi->nama_provinsi = $request->nama_provinsi;
         $provinsi->save();

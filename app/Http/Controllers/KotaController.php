@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kota;
+use App\Models\Kota;
 use App\Models\provinsi;
 use App\Http\Controller\DB;
 use Illuminate\Http\Request;
@@ -31,7 +31,7 @@ class KotaController extends Controller
      */
     public function create()
     {
-        $provinsi = Provinsi::all();
+        $provinsi = provinsi::all();
         return view('admin.kota.create', compact('provinsi'));
     }
 
@@ -74,7 +74,7 @@ class KotaController extends Controller
      */
     public function show($id)
     {
-        $provinsi = Provinsi::all();
+        $provinsi = provinsi::all();
         $kota = Kota::findOrFail($id);
         return view('admin.kota.show', compact('kota','provinsi'));
     }
@@ -87,7 +87,7 @@ class KotaController extends Controller
      */
     public function edit($id)
     {
-        $provinsi = Provinsi::all();
+        $provinsi = provinsi::all();
         $kota = Kota::findOrFail($id);
         return view('admin.kota.edit',compact('kota','provinsi'));
     }

@@ -36,7 +36,7 @@
                             @endif  
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-outline-primary btn-lg btn-block" onclick="return confirm('Apakah anda yakin?')">Simpan</button>
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah anda yakin?')">Simpan</button>
                         </div>
                     </form>
                 </div>

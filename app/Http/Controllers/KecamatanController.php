@@ -44,24 +44,12 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi
-        $request->validate(
-            [
-                'kode_kecamatan' => 'required|max:5|unique:kecamatans',
-                'nama_kecamatan' => 'required|unique:kecamatans',
-                'id_kota' => 'required|unique:kecamatans',
-            ],
-            [
-                'kode_kecamatan.required' => 'Kode Harus Diisi',
-                'kode_kecamatan.unique' => 'Kode Maksimal 5 Nomor',
-                'kode_kecamatan.unique' => 'Kode Sudah Dipakai',
-                'nama_kecamatan.required' =>' Nama kecamatan Harus Diisi',
-                'nama_kecamatan.unique' => 'Kode Sudah Dipakai',
-            ] );
+        
         $kecamatan = new Kecamatan();
+        $kecamatan->id_kota=$request->id_kota;
         $kecamatan->kode_kecamatan=$request->kode_kecamatan;
         $kecamatan->nama_kecamatan=$request->nama_kecamatan;
-        $kecamatan->id_kota=$request->id_kota;
+        
         $kecamatan->save();
         return redirect()->route('kecamatan.index')->with(['message'=>'Data berhasil dibuat']);
     }

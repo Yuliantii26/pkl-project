@@ -118,7 +118,7 @@
                 <div class="count-box pb-5 pt-0 pt-lg-5">
                   <i class="icofont-globe"></i>
                   <p>Kasus Data Global</p>
-                  <span data-toggle="counter-up"><?php echo $posglobal['value'] ?></span>
+                  
                   <p>Orang</p>
                 </div>
               </div>
@@ -172,48 +172,7 @@
     <!-- End Table Section provinsi -->
 
     <!-- ======== Table Section Global ======= -->
-    <section id="global" class="global">
-      <div class="container">
-
-        <div class="section-title" data-aos="zoom-out">
-          <h2>Data Kasus Global</h2>
-        </div>
-
-       
-        <div class="card-body" >
-            <div style="height:600px;overflow:auto;margin-right:15px;">
-              <table class="table table-bordered table-striped mb-0 " width="100%">
-                <thead>
-                  <tr>
-                    <th scope="col"><center>No</center></th>
-                    <th scope="col"><center>Negara</center></th>
-                    <th scope="col"><center>Positif</center></th>
-                    <th scope="col"><center>Sembuh</center></th>
-                    <th scope="col"><center>Meninggal</center></th>
-                  </tr>
-                </thead>
-              <tbody>
-              @php
-                $no = 1;
-              @endphp
-                @foreach($dunia as $data)
-                    <tr>
-                      <td> <?php echo $no++ ?></td>
-                      <td> <?php echo $data['attributes']['Country_Region'] ?></td>
-                      <td> <?php echo number_format($data['attributes']['Confirmed']) ?></td>
-                      <td><?php echo number_format($data['attributes']['Recovered'])?></td>
-                      <td><?php echo number_format($data['attributes']['Deaths'])?></td>
-                    </tr>
-                  @endforeach
-                </tbody>
-                
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      </section>
+    
     <!-- ======== End Table Section Global ======= -->
     
 

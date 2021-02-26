@@ -29,6 +29,7 @@ Route::get('admin',[App\Http\Controllers\HomeController::class,'admin']);
 use App\Http\Controllers\ProvinsiController;
 Route::resource('admin/provinsi',ProvinsiController::class);
 
+
 use App\Http\Controllers\KotaController;
 Route::resource('admin/kota', KotaController::class);
 
