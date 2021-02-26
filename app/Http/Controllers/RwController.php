@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rw;
+use App\Models\rw;
 use App\Models\Kelurahan;
 use Illuminate\Http\Request;
 
