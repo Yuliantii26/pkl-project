@@ -32,7 +32,7 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        $kota = Kota::all();
+        $kota = kota::all();
         return view('admin.kecamatan.create',compact('kota'));
     }
 
