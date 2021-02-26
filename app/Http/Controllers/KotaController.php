@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kota;
+use App\Models\kota;
 use App\Models\provinsi;
 use App\Http\Controller\DB;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class KotaController extends Controller
     }
     public function index()
     {
-        $kota = Kota::with('provinsi')->get();
+        $kota = kota::with('provinsi')->get();
         return view('admin.kota.index', compact('kota'));
     }
 
