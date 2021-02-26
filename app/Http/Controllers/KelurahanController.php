@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelurahan;
-use App\Models\Kecamatan;
+use App\Models\kelurahan;
+use App\Models\kecamatan;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class KelurahanController extends Controller
     
     public function index()
     {
-        $kelurahan = Kelurahan::with('kecamatan')->get();
+        $kelurahan = kelurahan::with('kecamatan')->get();
         return view('admin.kelurahan.index',compact('kelurahan'));
     }
 
