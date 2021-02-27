@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use DB;
-use App\Http\Models\Provinsi;
-use App\Http\Models\Kota;
-use App\Http\Models\Kecamatan;
-use App\Http\Models\Kelurahan;
-use App\Http\Models\Rw;
-use App\Http\Models\Tracking;
+use App\Http\Models\provinsi;
+use App\Http\Models\kota;
+use App\Http\Models\kecamatan;
+use App\Http\Models\kelurahan;
+use App\Http\Models\rw;
+use App\Http\Models\tracking;
 use Illuminate\Support\Carbon;
 
 class FrontendController extends Controller

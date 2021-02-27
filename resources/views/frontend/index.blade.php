@@ -217,32 +217,36 @@
           <div class="col-md-12 col-xl-6">
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="card text-white "></i></div>
-              <h4 class="title"><a href="">Apa Itu Virus Corona ?</a></h4>
-              <p class="description">Coronavirus adalah kumpulan virus yang bisa menginfeksi sistem pernapasan.
-               Pada banyak kasus, virus ini hanya menyebabkan infeksi pernapasan ringan, seperti flu. 
-               Namun, virus ini juga bisa menyebabkan infeksi pernapasan berat,
-                seperti infeksi paru-paru (pneumonia).</p>
+              <h4 class="title"><a href="https://www.unicef.org/indonesia/id/coronavirus"> Novel Coronavirus (COVID-19)</a></h4>
+              <p class="description">Hal-hal yang perlu anda ketahui<br>Unicef</p>
+              
             </div>
           </div>
         
-          <div class="row">
-          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          
+          <div class="col-md-6"  data-aos-delay="100">
             <div class="icon-box" >
               <div class="icon"><i class="" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href=""> Yang Perlu Anda Ketahui</a></h4>
-              <p class="description">Gejala Awal infeksi virus Corona atau COVID-19 bisa menyerupai gejala flu, 
-              yaitu demam, pilek, batuk kering, sakit tenggorokan, dan sakit kepala. 
-              Setelah itu, gejala dapat hilang dan sembuh atau malah memberat. 
-              Penderita dengan gejala yang berat bisa mengalami demam tinggi, 
-              batuk berdahak bahkan berdarah, sesak napas, dan nyeri dada. 
-              Gejala-gejala tersebut muncul ketika tubuh bereaksi melawan virus Corona.
-              Secara umum, ada 3 gejala umum yang bisa menandakan seseorang terinfeksi virus Corona, yaitu:<br>
-                 -Demam (suhu tubuh di atas 38 derajat Celsius)<br>
-                 -Batuk kering<br>
-                 -Sesak napas</p>
+              <h4 class="title"><a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona"> Daftar Rumah Sakit</a></h4>
+              <p class="description">Daftar 100 rumah sakit di Indoneis rujukan penanganan virus corona</p>
             </div>
          </div>
-
+      </div>
+      <div class="row">
+          <div class="col-md-12 col-xl-6">
+            <div class="icon-box" data-aos="fade-up">
+              <div class="icon"><i class="card text-white "></i></div>
+              <h4 class="title"><a href="https://infeksiemerging.kemkes.go.id/"> Media Informasi</a></h4>
+              <p class="description">Media informasi resmi penyakit Infeksi Emerging</p>
+            </div>
+          </div>
+          <div class="col-md-6"  data-aos-delay="100">
+            <div class="icon-box" >
+              <div class="icon"><i class="" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public"> Coronavirus Disease(COVID-19)</a></h4>
+              <p class="description">Coronavirus Disease advice for the public</p>
+            </div>
+         </div>
       </div>
     </section><!-- End Services Section -->
     
