@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('admin',[App\Http\Controllers\HomeController::class,'admin']);
+Route::get('/admin',[App\Http\Controllers\HomeController::class,'admin']);
 
 
 
@@ -46,4 +46,4 @@ use App\Http\Controllers\TrackingController;
 Route::resource('admin/tracking',TrackingController::class); 
 
 use App\Http\Controllers\FrontendController;
-Route::resource('frontend/index', FrontendController::class);
+Route::resource('/', FrontendController::class);

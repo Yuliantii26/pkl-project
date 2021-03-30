@@ -3,6 +3,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+                   @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
             <div class="card">
                 <div class="card-header">
                     <h3>Data Kelurahan</h3>

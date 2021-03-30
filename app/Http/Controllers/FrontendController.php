@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use DB;
-use App\Http\Models\provinsi;
-use App\Http\Models\kota;
-use App\Http\Models\kecamatan;
-use App\Http\Models\kelurahan;
-use App\Http\Models\rw;
-use App\Http\Models\tracking;
+use App\Http\Models\Provinsi;
+use App\Http\Models\Kota;
+use App\Http\Models\Kecamatan;
+use App\Http\Models\Kelurahan;
+use App\Http\Models\Rw;
+use App\Http\Models\Tracking;
 use Illuminate\Support\Carbon;
 
 class FrontendController extends Controller
@@ -37,8 +37,8 @@ class FrontendController extends Controller
        'trackings.sembuh','trackings.meninggal')
        ->join('trackings','rws.id','=','trackings.id_rw')
        ->sum('trackings.meninggal');
-//    $global = file_get_contents('https://api.kawalcorona.com/positif');
-//    $posglobal = json_decode($global, TRUE);
+   $global = file_get_contents('https://api.kawalcorona.com/positif');
+   $posglobal = json_decode($global, TRUE);
 
    // Date
    $tanggal = Carbon::now()->format('D d-M-Y');
@@ -58,10 +58,10 @@ class FrontendController extends Controller
              ->get();
 
    // Table Global
-//    $datadunia= file_get_contents("https://api.kawalcorona.com/");
-//    $dunia = json_decode($datadunia, TRUE);
+   $datadunia= file_get_contents("https://api.kawalcorona.com/");
+   $dunia = json_decode($datadunia, TRUE);
        
-   return view('frontend.index',compact('positif','sembuh','meninggal', 'tanggal','tampil'));
+   return view('frontend.index',compact('positif','sembuh','meninggal','posglobal', 'tanggal','tampil','dunia'));
 }
     /**
      * Show the form for creating a new resource.

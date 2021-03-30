@@ -51,7 +51,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
         <li class="active"></li>
-          <li><a href="#home">Home</a></li>
+          <!-- <li><a href="#home">Home</a></li> -->
           <li><a href="#about">Data kasus</a></li>
           <li><a href="#provinsi">Provinsi</a></li>
           <li><a href="#global">Global</a></li>
@@ -118,7 +118,7 @@
                 <div class="count-box pb-5 pt-0 pt-lg-5">
                   <i class="icofont-globe"></i>
                   <p>Kasus Data Global</p>
-                  
+                  <span data-toggle="counter-up"><?php echo $posglobal['value'] ?></span>
                   <p>Orang</p>
                 </div>
               </div>
@@ -192,7 +192,20 @@
                     <th scope="col"><center>Meninggal</center></th>
                   </tr>
                 </thead>
-             
+              <tbody>
+              @php
+                $no = 1;
+              @endphp
+                @foreach($dunia as $data)
+                    <tr>
+                      <td> <?php echo $no++ ?></td>
+                      <td> <?php echo $data['attributes']['Country_Region'] ?></td>
+                      <td> <?php echo number_format($data['attributes']['Confirmed']) ?></td>
+                      <td><?php echo number_format($data['attributes']['Recovered'])?></td>
+                      <td><?php echo number_format($data['attributes']['Deaths'])?></td>
+                    </tr>
+                  @endforeach
+                </tbody>
                 
               </table>
             </div>
@@ -265,7 +278,7 @@
             <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
           </div> -->
            
-          <div class="col-lg-3 col-md-12 footer-links">
+          <!-- <div class="col-lg-12 col-md-12 footer-links">
             <h4>Useful Links</h4>
             <ul>
             <li><a href="#hero">Home</a></li>
@@ -278,9 +291,9 @@
             
 
             </ul>
-          </div>
+          </div> -->
 
-          <div class="col-lg-3 col-md-12 footer-contact">
+          <div class="col-lg-12 col-md-12 footer-contact">
             <h4>Tracking covid</h4>
             <p>
               JL.Situtarate - Cibaduyut <br>

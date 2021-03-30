@@ -75,7 +75,7 @@ class KecamatanController extends Controller
     public function edit($id)
     {
         $kecamatan = kecamatan::findOrFail($id);
-        $kota = Kota::all();
+        $kota = kota::all();
         return view('admin.kecamatan.edit',compact('kecamatan','kota'));
     }
 

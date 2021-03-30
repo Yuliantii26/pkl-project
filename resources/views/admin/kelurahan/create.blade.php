@@ -11,16 +11,12 @@
             <div class="form-group">
                  <label for="" class="form-label">id kelurahan</label>
                  <input type="text" name="id_kelurahan" class="form-control">
-                 @if($errors->has('id_kelurahan'))
-                                <span class="text-danger">{{$errors->first('id_kelurahan')}}</span>
-                            @endif
+                 
             </div>
             <div class="form-group">
                <label for="">Nama kelurahan</label>
                <input type="text" name="nama_kelurahan" class="form-control">
-               @if($errors->has('nama_kelurahan'))
-                                <span class="text-danger">{{$errors->first('nama_kelurahan')}}</span>
-                            @endif
+              
                </div>
                <label for="">Nama Kecamatan</label>
                <select name="id_kecamatan" class="form-control">
